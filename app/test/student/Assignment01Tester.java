@@ -10,11 +10,11 @@ public class Assignment01Tester {
 	}
 
 	public void changeStudent(int sNumber, String firstName, String lastName) {
-		this.group.changeStudent(new Student(firstName,lastName,sNumber));
+		this.group.changeStudentName(sNumber,firstName,lastName);
 	}
 
 	public String printStudents() {
-		return this.group;
+		return this.group.asString();
 	}
 
 }

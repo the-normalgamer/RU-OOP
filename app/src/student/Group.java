@@ -24,7 +24,7 @@ public class Group {
     }
 
     public String asString() {
-        String string = "Group contents:\n";
+        String string = "";
         for (Student student : this.all) {
             string += student.getFirstName() + " "
                     + student.getLastName()  + ", "
