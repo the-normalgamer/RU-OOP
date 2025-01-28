@@ -5,11 +5,31 @@ public class Group {
     private int numStud;
     
     public Group(int amount) {
-        all = new Student[amount];
-        numStud = 0;
+        this.all     = new Student[amount];
+        this.numStud = 0;
     }
 
-    public void addStudent (Student name, int place) {
-        this.all[place] = name;
+    public void addStudent(Student student) {
+        this.all[numStud] = student;
+        numStud++;
+    }
+
+    public void changeStudentName(int numStud, String fName, String lName) {
+        for (Student student : this.all) {
+            if (student.getStNumber() == numStud) {
+                student.changeName(fName, lName);
+                break;
+            }
+        }
+    }
+
+    public String asString() {
+        String string = "Group contents:\n";
+        for (Student student : this.all) {
+            string += student.getFirstName() + " "
+                    + student.getLastName()  + ", "
+                    + "s" + student.getStNumber() + "\n";
+        }
+        return string;
     }
 }
