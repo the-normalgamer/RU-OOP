@@ -6,7 +6,7 @@ public class Assignment01Tester {
 		this.group = new Group(i);
 	}
 	public void addStudent(int sNumber, String firstName, String lastName) {
-		this.group.addToGroup(new Student (firstName , lastName, sNumber ));
+		this.group.addStudent(new Student (firstName , lastName, sNumber ));
 	}
 
 	public void changeStudent(int sNumber, String firstName, String lastName) {
