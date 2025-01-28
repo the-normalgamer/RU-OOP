@@ -10,5 +10,6 @@ public class Group {
     }
     
     public void addStudent (Student name, int place) {
+        this.all[place] = name;
     }
 }
