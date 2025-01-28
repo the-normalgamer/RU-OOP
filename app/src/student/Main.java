@@ -11,6 +11,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Welcome, how big do you want the group to be?");
         int size = scan.nextInt();
-        
+
+        Group group = new Group(size);
     }
 }
