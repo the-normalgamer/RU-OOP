@@ -8,7 +8,7 @@ public class Group {
         all = new Student[amount];
         numStud = 0;
     }
-    
+
     public void addStudent (Student name, int place) {
         this.all[place] = name;
     }
