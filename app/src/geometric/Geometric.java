@@ -1,11 +1,23 @@
 package geometric;
 
+import java.util.Arrays;
+
 public interface Geometric {
 
     /**
      * @return The area of the geometric shape.
      */
     double getArea();
+
+    // TODO documentation
+    default double getX() {
+        return getBorder(Side.LEFT);
+    }
+
+    // TODO documentation
+    default double getY() {
+        return getBorder(Side.BOTTOM);
+    }
 
     enum Side {
         TOP,
@@ -26,4 +38,11 @@ public interface Geometric {
      * @param dy How much to move vertically.
      */
     void moveObject(double dx, double dy);
+
+    // TODO documentation
+    default Geometric[] filter(Geometric[] shapes, GeometricPredicate criterion, double threshold) {
+        return (Geometric[]) Arrays.stream(shapes)
+                .filter(x -> criterion.predicate(x, threshold))
+                .toArray();
+    }
 }
