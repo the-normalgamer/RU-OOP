@@ -1,5 +1,6 @@
 package geometric;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Assignment02Tester {
@@ -40,22 +41,29 @@ public class Assignment02Tester {
 		shapes.get(index).moveObject(dx,dy);
 	}
 
+	//TODO
 	public void sortByArea() {
+		Geometric.sort(shapes, new )
 	}
 
+	//TODO
 	public void sortByX() {
 	}
 
+	//TODO
 	public void sortByY() {
 	}
 
 	public void filterByArea(double threshold) {
+		Geometric.filter(shapes, new CriterionArea(), threshold);
 	}
 
 	public void filterByX(double threshold) {
+		Geometric.filter(shapes, new CriterionX(), threshold);
 	}
 
 	public void filterByY(double threshold) {
+		Geometric.filter(shapes, new CriterionY(), threshold);
 	}
 
 	public int getShapeCount() {
