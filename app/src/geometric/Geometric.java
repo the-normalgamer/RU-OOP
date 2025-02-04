@@ -1,6 +1,7 @@
 package geometric;
 
 public interface Geometric {
+
     /**
      * @return The area of the geometric shape.
      */
