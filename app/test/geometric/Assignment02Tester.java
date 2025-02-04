@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Assignment02Tester {
-	private ArrayList<Geometric> shapes = new ArrayList<Geometric>();
+	private static ArrayList<Geometric> shapes = new ArrayList<Geometric>();
 
 	public Assignment02Tester() {
 	}
@@ -41,17 +41,19 @@ public class Assignment02Tester {
 		shapes.get(index).moveObject(dx,dy);
 	}
 
-	//TODO
+
 	public void sortByArea() {
-		Geometric.sort(shapes, new )
+		Geometric.sort(shapes, new GeometricComparatorArea());
 	}
 
-	//TODO
+
 	public void sortByX() {
+		Geometric.sort(shapes, new GeometricComparatorX());
 	}
 
-	//TODO
+
 	public void sortByY() {
+		Geometric.sort(shapes, new GeometricComparatorY());
 	}
 
 	public void filterByArea(double threshold) {
