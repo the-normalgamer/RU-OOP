@@ -17,6 +17,7 @@ public class Main {
 		System.out.println("Goodbye!");
 	}
 
+
 	static Geometric[] filter(Geometric[] shapes, GeometricPredicate criterion, double threshold) {
 		return Arrays.stream(shapes)
 				.filter(x -> {
