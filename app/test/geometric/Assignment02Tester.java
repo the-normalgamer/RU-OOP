@@ -2,73 +2,79 @@ package geometric;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import static geometric.Main.filter;
 
 public class Assignment02Tester {
-	private static ArrayList<Geometric> shapes = new ArrayList<Geometric>();
+	private  Geometric[] shapes = new Geometric[10];
+	private  int shapeAmount = 0;
 
 	public Assignment02Tester() {
 	}
 
 	public void createCircle(double x, double y, double r) {
-		shapes.add(new Circle(x, y, r));
+		shapes[shapeAmount] = new Circle(x, y, r);
+		shapeAmount++;
 	}
 
 	public void createRectangle(double x, double y, double width, double height) {
-		shapes.add(new Rectangle(x,y,width,height));
+		shapes[shapeAmount] =new Rectangle(x,y,width,height);
+		shapeAmount++;
 	}
 
 	public double topBorder(int index) {
-		return shapes.get(index).getBorder(Geometric.Side.TOP);
+		return shapes[index].getBorder(Geometric.Side.TOP);
 	}
 
 	public double rightBorder(int index) {
-		return shapes.get(index).getBorder(Geometric.Side.RIGHT);
+		return shapes[index].getBorder(Geometric.Side.RIGHT);
 	}
 
 	public double bottomBorder(int index) {
-		return shapes.get(index).getBorder(Geometric.Side.BOTTOM);
+		return shapes[index].getBorder(Geometric.Side.BOTTOM);
 	}
 
 	public double leftBorder(int index) {
-		return shapes.get(index).getBorder(Geometric.Side.LEFT);
+		return shapes[index].getBorder(Geometric.Side.LEFT);
 	}
 
 	public double area(int index) {
-		return shapes.get(index).getArea();
+		return shapes[index].getArea();
 	}
 
 	public void move(int index, double dx, double dy) {
-		shapes.get(index).moveObject(dx,dy);
+		shapes[index].moveObject(dx,dy);
 	}
 
 
 	public void sortByArea() {
-		Geometric.sort(shapes, new GeometricComparatorArea());
+		Arrays.sort(shapes, new GeometricComparatorArea());
 	}
 
 
 	public void sortByX() {
-		Geometric.sort(shapes, new GeometricComparatorX());
+		Arrays.sort(shapes, new GeometricComparatorX());
 	}
 
 
 	public void sortByY() {
-		Geometric.sort(shapes, new GeometricComparatorY());
+		Arrays.sort(shapes, new GeometricComparatorY());
 	}
 
 	public void filterByArea(double threshold) {
-		Geometric.filter(shapes, new CriterionArea(), threshold);
+		shapes = filter(shapes, new GeometricCriterionArea(), threshold);
 	}
 
 	public void filterByX(double threshold) {
-		Geometric.filter(shapes, new CriterionX(), threshold);
+		shapes = filter(shapes, new GeometricCriterionX(), threshold);
 	}
 
 	public void filterByY(double threshold) {
-		Geometric.filter(shapes, new CriterionY(), threshold);
+		shapes = filter(shapes, new GeometricCriterionY(), threshold);
 	}
 
 	public int getShapeCount() {
-		return shapes.size();
+		return shapeAmount;
 	}
 }
