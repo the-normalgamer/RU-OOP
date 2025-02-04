@@ -1,7 +1,5 @@
 package geometric;
 
-import java.util.Arrays;
-
 public interface Geometric {
 
     /**
@@ -9,12 +7,16 @@ public interface Geometric {
      */
     double getArea();
 
-    // TODO documentation
+    /**
+     * @return X coordinate of the geometric shape.
+     */
     default double getX() {
         return getBorder(Side.LEFT);
     }
 
-    // TODO documentation
+    /**
+     * @return Y coordinate of the geometric shape.
+     */
     default double getY() {
         return getBorder(Side.BOTTOM);
     }
@@ -38,11 +40,4 @@ public interface Geometric {
      * @param dy How much to move vertically.
      */
     void moveObject(double dx, double dy);
-
-    // TODO documentation
-    default Geometric[] filter(Geometric[] shapes, GeometricPredicate criterion, double threshold) {
-        return (Geometric[]) Arrays.stream(shapes)
-                .filter(x -> criterion.predicate(x, threshold))
-                .toArray();
-    }
 }

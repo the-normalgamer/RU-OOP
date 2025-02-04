@@ -1,6 +1,7 @@
 package geometric;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main {
@@ -14,6 +15,16 @@ public class Main {
 		System.out.println("Loading command line...");
 		commands();
 		System.out.println("Goodbye!");
+	}
+
+	static Geometric[] filter(Geometric[] shapes, GeometricPredicate criterion, double threshold) {
+		return Arrays.stream(shapes)
+				.filter(x -> {
+					boolean result = criterion.predicate(x, threshold);
+					if (!result) index--;
+					return result;
+				})
+				.toArray(size -> new Geometric[size]);
 	}
 
 	public static void commands() {
@@ -44,19 +55,25 @@ public class Main {
 					System.out.println("Usage: \nshow \n");
 					break;
 				}
+
 				case "circle": {
 					if (input.length == 4) { // Expected input: circle x y r
-						double x, y, z;
+						if (index == NO_SHAPES) {
+							System.out.println("There is no room for more shapes!");
+							break;
+						}
+
+						double x, y, r;
 						try {
 							x = Double.parseDouble(input[1]);
 							y = Double.parseDouble(input[2]);
-							z = Double.parseDouble(input[3]);
+							r = Double.parseDouble(input[3]);
 						} catch (Exception e) {
 							System.out.println("Invalid inputs!\n");
 							break;
 						}
 
-						shapes[index] = new Circle(x, y, z);
+						shapes[index] = new Circle(x, y, r);
 						index++;
 						System.out.println("Successfully added circle!");
 						break;
@@ -64,40 +81,124 @@ public class Main {
 					System.out.println("Usage: \ncircle <x> <y> <r> \n");
 					break;
 				}
+
 				case "rectangle": {
 					if (input.length == 5) { // Expected input: rectangle x y w h
-						// TODO functionality
+						if (index == NO_SHAPES) {
+							System.out.println("There is no room for more shapes!");
+							break;
+						}
+
+						double x, y, w, h;
+						try {
+							x = Double.parseDouble(input[1]);
+							y = Double.parseDouble(input[2]);
+							w = Double.parseDouble(input[3]);
+							h = Double.parseDouble(input[4]);
+						} catch (Exception e) {
+							System.out.println("Invalid inputs!\n");
+							break;
+						}
+
+						shapes[index] = new Rectangle(x, y, w, h);
+						index++;
+						System.out.println("Successfully added rectangle!");
 						break;
 					}
-					System.out.println("Usage: \ncircle <x> <y> <width> <height> \n");
+					System.out.println("Usage: \nrectangle <x> <y> <width> <height>\n");
 					break;
 				}
+
 				case "move": {
 					if (input.length == 4) { // Expected input: move i x y
-						// TODO functionality
+						try {
+							shapes[Integer.parseInt(input[1])].moveObject(
+									Integer.parseInt(input[2]),
+									Integer.parseInt(input[3])
+							);
+						} catch (Exception e) {
+							System.out.println("Invalid inputs!\n");
+							break;
+						}
 						break;
 					}
 					System.out.println("Usage: \nmove <index> <horizontal> <vertical> \n");
 					break;
 				}
+
 				case "remove": {
-					System.out.println("Entered remove command");
+					if (input.length == 2) { // Expected input: remove i
+						try {
+							int inputIndex = Integer.parseInt(input[1]);
+							if (shapes[inputIndex] == null) {
+								System.out.println("Index " + inputIndex + " is already empty!");
+								break;
+							}
+							System.out.println("Successfully removed " + shapes[inputIndex]);
+
+							// Move all elements down (overrides the element at i)
+							for (int i = inputIndex; i < NO_SHAPES - 1; i++) shapes[i] = shapes[i + 1];
+							shapes[NO_SHAPES - 1] = null;
+							index--;
+						} catch (Exception e) {
+							System.out.println("Invalid input!\n");
+							break;
+						}
+						break;
+					}
+					System.out.println("Usage: \nremove <index> \n");
 					break;
 				}
+
 				case "filter": {
-					if (input.length == 1 || input.length == 2) { // Expected input: filter c n
-						Arrays.sort(shapes, new GeometricComparator());
+					if (input.length == 3) { // Expected input: filter c n
+						double n;
+						GeometricPredicate criterion;
+
+						try {
+							n = Double.parseDouble(input[2]);
+
+							switch (input[1]) {
+								case "x": criterion = new GeometricCriterionX(); break;
+								case "y": criterion = new GeometricCriterionY(); break;
+								case "a": criterion = new GeometricCriterionArea(); break;
+								default:  throw new Exception("THAT'S NOT A CRITERION YOU DONUT");
+							}
+						} catch (Exception e) {
+							System.out.println("Invalid inputs!\n");
+							break;
+						}
+						shapes = filter(shapes, criterion, n);
+						System.out.println("Successfully filtered shapes!");
+						break;
 					}
 					System.out.println("Usage: \nfilter <criterion> <threshold>\n");
 					break;
 				}
+
 				case "sort": {
 					if (input.length == 1 || input.length == 2) { // Expected input: sort [c]
 
+						Comparator<Geometric> comparator = new GeometricComparatorArea();
+						if (input.length == 2) {
+							try {
+								switch (input[1]) {
+									case "x": comparator = new GeometricComparatorX(); break;
+									case "y": comparator = new GeometricComparatorY(); break;
+								}
+							} catch (Exception e) {
+								System.out.println("Invalid inputs!\n");
+								break;
+							}
+						}
+						Arrays.sort(shapes, comparator);
+						System.out.println("Successfully sorted shapes!");
+						break;
 					}
 					System.out.println("Usage: \nsort [criterion] \n");
 					break;
 				}
+
 				default: System.out.println("Unknown command: '" + input[0] + "'! Please try again.");
 			}
 
