@@ -28,8 +28,8 @@ public class Rectangle implements Geometric {
     @Override
     public double getBorder(Side side) {
         return switch (side) {
-            case TOP ->    this.originY;
-            case BOTTOM -> this.originY + this.height;
+            case TOP ->    this.originY + this.height;
+            case BOTTOM -> this.originY;
             case RIGHT ->  this.originX + this.width;
             case LEFT ->   this.originX;
         };
