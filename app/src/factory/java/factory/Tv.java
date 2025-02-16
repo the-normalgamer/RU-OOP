@@ -18,6 +18,11 @@ public class Tv implements Product, EnergyConsumer, Display{
     private double prize;
 
     @Override
+    public double getKiloWattHour(){
+        return getVoltage()*getCurrent()*24*365/10000;
+    }
+
+    @Override
     public int getHorizontalResolution() {
         return horizontalResolution;
     }
@@ -84,6 +89,11 @@ public class Tv implements Product, EnergyConsumer, Display{
         prize = newPrice;
     }
 
+    public ArrayList<String> getConnectors(){
+        return connectors;
+    }
+
+
     private Tv(TvBuilder builder){
         this.horizontalResolution = builder.horizontalResolution;
         this.verticalResolution = builder.verticalResolution;
@@ -105,14 +115,14 @@ public class Tv implements Product, EnergyConsumer, Display{
         private int horizontalResolution;
         private int verticalResolution;
         // optional parameters
-        private int refreshRate;
-        private int bitsPerPixel;
+        private int refreshRate = 60;
+        private int bitsPerPixel = 24;
         private String brand;
         private String model;
         private String displayTechnology;
-        private ArrayList<String> connectors;
-        private double voltage;
-        private double current;
+        private ArrayList<String> connectors = new ArrayList<String>();
+        private double voltage = 240;
+        private double current = 0.1;
         private double prize;
 
         public TvBuilder(int horizontalResolution, int verticalResolution){
@@ -120,7 +130,7 @@ public class Tv implements Product, EnergyConsumer, Display{
             this.verticalResolution = verticalResolution;
         }
 
-        public TvBuilder setrefreshRate(int refreshRate){
+        public TvBuilder setRefreshRate(int refreshRate){
             this.refreshRate = refreshRate;
             return this;
         }
@@ -166,5 +176,14 @@ public class Tv implements Product, EnergyConsumer, Display{
         public Tv build(){
             return new Tv(this);
         }
+    }
+
+    /**
+     * makes a visitor visit this product
+     * @param visitor a given visitor
+     */
+    @Override
+    public void accept(ProductVisitor visitor) {
+        visitor.visit(this);
     }
 }

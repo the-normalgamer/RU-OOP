@@ -20,5 +20,6 @@ public interface Product {
     default void multiplyPrice(double factor){
         setPrice(getPrice()*factor);
     }
-    //void visit(ProductVisitor visitor);
+
+    void accept(ProductVisitor visitor);
 }

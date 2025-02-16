@@ -3,6 +3,7 @@
  */
 package factory;
 
+import factory.java.factory.Warehouse;
 import org.junit.Test;
 
 public class AppTest {

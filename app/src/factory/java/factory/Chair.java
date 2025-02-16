@@ -3,11 +3,26 @@ package factory.java.factory;
 
 public class Chair implements Product {
     private double price;
-    String material = "wood";
+    String material = "wooden";
+
+
+    public Chair(String material, double price){
+        this.material = material;
+        this.price = price;
+    }
 
     @Override
     public void setPrice(double price){
         this.price = price;
+    }
+
+    /**
+     * makes a visitor visit this product
+     * @param visitor a given visitor
+     */
+    @Override
+    public void accept(ProductVisitor visitor) {
+        visitor.visit(this);
     }
 
     @Override
@@ -21,9 +36,5 @@ public class Chair implements Product {
     public String getMaterial(){
         return material;
     }
-    /*
-    @Override
-    public void visit(ProductVisitor visitor) {
 
-    }*/
 }

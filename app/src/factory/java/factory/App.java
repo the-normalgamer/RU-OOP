@@ -13,6 +13,6 @@ public class App {
 
         warehouse.procedure2();
         System.out.println("After procedure 2:\n");
-        System.err.println(warehouse);
+        System.out.println(warehouse);
     }
 }

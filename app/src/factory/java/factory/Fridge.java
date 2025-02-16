@@ -41,6 +41,16 @@ public class Fridge implements Product, EnergyConsumer{
         fridge.hasFreezer = false;
         return fridge;
     }
+    public Boolean hasFreezer(){
+        return hasFreezer;
+    }
+    public String getBrand() {
+        return brand;
+    }
+
+    public int getVolumeInLiters() {
+        return volumeInLiters;
+    }
 
     @Override
     public double getPrice() {
@@ -60,5 +70,13 @@ public class Fridge implements Product, EnergyConsumer{
     @Override
     public double getCurrent() {
         return current;
+    }
+    /**
+     * makes a visitor visit this product
+     * @param visitor a given visitor
+     */
+    @Override
+    public void accept(ProductVisitor visitor) {
+        visitor.visit(this);
     }
 }
