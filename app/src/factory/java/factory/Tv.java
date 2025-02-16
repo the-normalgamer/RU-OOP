@@ -54,7 +54,7 @@ public class Tv implements Product, EnergyConsumer, Display{
 
     @Override
     public int getConnectorCount(String type) {
-        private Iterator<String> iterator = connectors.iterator()
+        Iterator<String> iterator = connectors.iterator();
         int count = 0;
         while (iterator.hasNext()){
             if (Objects.equals(iterator.next(), type)) {
@@ -84,5 +84,87 @@ public class Tv implements Product, EnergyConsumer, Display{
         prize = newPrice;
     }
 
+    private Tv(TvBuilder builder){
+        this.horizontalResolution = builder.horizontalResolution;
+        this.verticalResolution = builder.verticalResolution;
+        this.refreshRate = builder.refreshRate;
+        this.bitsPerPixel = builder.bitsPerPixel;
+        this.brand = builder.brand;
+        this.model = builder.model;
+        this.displayTechnology = builder.displayTechnology;
+        this.connectors = builder.connectors;
+        this.voltage = builder.voltage;
+        this.current = builder.current;
+        this.prize = builder.prize;
 
+    }
+
+    public static class TvBuilder{
+
+        // required parameters
+        private int horizontalResolution;
+        private int verticalResolution;
+        // optional parameters
+        private int refreshRate;
+        private int bitsPerPixel;
+        private String brand;
+        private String model;
+        private String displayTechnology;
+        private ArrayList<String> connectors;
+        private double voltage;
+        private double current;
+        private double prize;
+
+        public TvBuilder(int horizontalResolution, int verticalResolution){
+            this.horizontalResolution = horizontalResolution;
+            this.verticalResolution = verticalResolution;
+        }
+
+        public TvBuilder setrefreshRate(int refreshRate){
+            this.refreshRate = refreshRate;
+            return this;
+        }
+
+
+        public TvBuilder setBitsPerPixel(int bitsPerPixel){
+            this.bitsPerPixel = bitsPerPixel;
+            return this;
+        }
+        public TvBuilder setBrand(String brand){
+            this.brand = brand;
+            return this;
+        }
+        public TvBuilder setModel(String model){
+            this.model = model;
+            return this;
+        }
+        public TvBuilder setDisplayTechnology(String displayTechnology){
+            this.displayTechnology = displayTechnology;
+            return this;
+        }
+        public TvBuilder addConnector(String connector){
+            this.connectors.add(connector);
+            return this;
+        }
+
+        public TvBuilder setVoltage(double voltage){
+            this.voltage = voltage;
+            return this;
+        }
+
+        public TvBuilder setCurrent(double current){
+            this.current = current;
+            return this;
+        }
+
+        public TvBuilder setPrize(double prize){
+            this.prize = prize;
+            return this;
+        }
+
+
+        public Tv build(){
+            return new Tv(this);
+        }
+    }
 }
