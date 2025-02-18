@@ -5,6 +5,6 @@ public class ThisThatQuestion extends MultipleChoiceQuestion{
 
     }
     ThisThatQuestion ( String question, String answer1, String answer2 , int correctAnswer ){
-        ThisThatQuestion(question, answer1, answer2, correctAnswer, 5)
+        new ThisThatQuestion(question, answer1, answer2, correctAnswer, 5)
     }
 }
