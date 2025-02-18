@@ -3,6 +3,7 @@ package quiz;
 public class Question {
     private int score = 0;
 
+    @Override
     public String toString(){
         return "";
         //TODO
@@ -18,8 +19,8 @@ public class Question {
     public int getScore(){
         return this.score;
     }
-    public void setScore(int val){
-        score = val;
+    public void setScore(int score){
+        this.score = score;
     }
 
 }
