@@ -29,6 +29,6 @@ public class MultipleChoiceQuestion extends Question {
      * @param correctAnswer Index of {@code answers} which points to the correct answer
      */
     public MultipleChoiceQuestion (String question, String[] answers, int correctAnswer){
-        new MultipleChoiceQuestion(question, answers, correctAnswer, DEFAULT_POINTS);
+        this(question, answers, correctAnswer, DEFAULT_POINTS);
     }
 }

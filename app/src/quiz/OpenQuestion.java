@@ -22,7 +22,7 @@ public class OpenQuestion extends Question {
      * @param score The number of points to reward for a correct answer
      */
     public OpenQuestion(String question, String answer, int score) {
-        new OpenQuestion(question, answer, str -> str.equalsIgnoreCase(answer) ? score : 0);
+        this(question, answer, str -> str.equalsIgnoreCase(answer) ? score : 0);
     }
 
     /**
@@ -32,7 +32,7 @@ public class OpenQuestion extends Question {
      * @param answer The correct answer to the question
      */
     public OpenQuestion(String question, String answer) {
-        new OpenQuestion(question, answer, DEFAULT_POINTS);
+        this(question, answer, DEFAULT_POINTS);
     }
 
 }
