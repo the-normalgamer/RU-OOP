@@ -2,6 +2,8 @@ package quiz;
 
 public class Question {
     private int score = 0;
+    private String answer;
+
 
     @Override
     public String toString(){
