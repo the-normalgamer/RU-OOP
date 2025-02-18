@@ -1,26 +1,36 @@
 package quiz;
 
-public class Question {
-    private int score = 0;
+import java.util.function.Function;
+
+public abstract class Question {
+    public static final int DEFAULT_POINTS = 5;
+    protected String question;
+    protected String correctAnswer;
+    protected Function<String, Integer> evaluation = s -> DEFAULT_POINTS;
 
     @Override
     public String toString(){
         return "";
-        //TODO
-    }
-    public boolean isCorrect(String answer){
-        return true;
-        //TODO
-    }
-    public String correctAnswer(){
-        return "";
-        //TODO
-    }
-    public int getScore(){
-        return this.score;
-    }
-    public void setScore(int score){
-        this.score = score;
+        //TODO womp womp
     }
 
+    /**
+     * @param answer the entered answer
+     * @return whether the submitted answer results in at least 1 point
+     */
+    public boolean isCorrect(String answer) {
+        return evaluation.apply(answer) > 0;
+    }
+
+    /**
+     * @param answer the input answer
+     * @return the number of points rewarded given that answer
+     */
+    public int getPointReward(String answer) {
+        return evaluation.apply(answer);
+    }
+
+    public String getCorrectAnswer() {
+        return this.correctAnswer;
+    }
 }

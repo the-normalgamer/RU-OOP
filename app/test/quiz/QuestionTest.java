@@ -12,7 +12,7 @@ public class QuestionTest {
 		assertEquals("What is the best kind of pancake?", q.toString());
 		assertTrue(q.isCorrect("Spinach and goat cheese"));
 		assertFalse(q.isCorrect("Chili peppers, gummy bears, and whipped cream"));
-		assertEquals("Spinach and goat cheese", q.correctAnswer());
+		assertEquals("Spinach and goat cheese", q.getCorrectAnswer());
 		assertEquals(2, q.getScore());
 	}
 
@@ -24,7 +24,7 @@ public class QuestionTest {
 		assertTrue(q.isCorrect("b"));
 		assertFalse(q.isCorrect("a"));
 		assertFalse(q.isCorrect("c"));
-		assertEquals("b", q.correctAnswer());
+		assertEquals("b", q.getCorrectAnswer());
 		assertEquals(4, q.getScore());
 	}
 
@@ -35,7 +35,7 @@ public class QuestionTest {
 		assertTrue(q.isCorrect("yes"));
 		assertFalse(q.isCorrect("no"));
 		assertFalse(q.isCorrect("maybe"));
-		assertEquals("yes", q.correctAnswer());
+		assertEquals("yes", q.getCorrectAnswer());
 		assertEquals(1, q.getScore());
 	}
 
