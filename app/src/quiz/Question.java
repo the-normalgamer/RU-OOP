@@ -10,8 +10,7 @@ public abstract class Question {
 
     @Override
     public String toString(){
-        return "";
-        //TODO womp womp
+        return ((this.question == null) ? "null" : this.question) + "\n";
     }
 
     /**
