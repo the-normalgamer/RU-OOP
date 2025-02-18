@@ -27,6 +27,9 @@ public class Main {
 		questions.add(new ThisThatQuestion("Is there a difference between an interface and an abstract class?", "Yes", "No", 0, 5));
 		questions.add(new ThisThatQuestion("Is there a maximum to the amount of constructors a class can have in Java?", "Yes", "No", 1));
 
+		questions.add(new OpenQuestion("How many A's can you type? You get 1 point per A", "AAA",
+				str -> Math.toIntExact(str.chars().filter(c -> c == 'a' || c == 'A').count())));
+
 		Scanner scanner = new Scanner(System.in);
 		for (Question question : questions){
 			System.out.print(question);
