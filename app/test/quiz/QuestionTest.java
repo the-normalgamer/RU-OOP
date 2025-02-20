@@ -18,19 +18,19 @@ public class QuestionTest {
 
 	@Test
 	public void multipleChoiceQuestionTest() {
-		Question q = new MultipleChoiceQuestion("What is the complexity of making pancakes?",
+		MultipleChoiceQuestion q = new MultipleChoiceQuestion("What is the complexity of making pancakes?",
 				new String[] { "O(N)", "O(log N)", "O(N log N)" }, 1, 4);
-		assertEquals("What is the complexity of making pancakes?\na) O(N)\nb) O(log N)\nc) O(N log N)\n", q.toString());
-		assertTrue(q.isCorrect("b"));
+		assertEquals("What is the complexity of making pancakes?\na) O(N)\nb) O(log N)\nc) O(N log N)", q.toString());
 		assertFalse(q.isCorrect("a"));
+		assertTrue(q.isCorrect("b"));
 		assertFalse(q.isCorrect("c"));
-		assertEquals("b", q.getCorrectAnswer());
+		assertEquals("b", q.getCorrectIndex());
 		assertEquals(4, q.getScore());
 	}
 
 	@Test
 	public void thisThatQuestionTest() {
-		Question q = new ThisThatQuestion("Are you hungry?", "yes", "no", 0, 1);
+		ThisThatQuestion q = new ThisThatQuestion("Are you hungry?", "yes", "no", 0, 1);
 		assertEquals("yes or no: Are you hungry?", q.toString());
 		assertTrue(q.isCorrect("yes"));
 		assertFalse(q.isCorrect("no"));

@@ -23,6 +23,7 @@ public class OpenQuestion extends Question {
      */
     public OpenQuestion(String question, String answer, int score) {
         this(question, answer, str -> str.equalsIgnoreCase(answer) ? score : 0);
+        this.points = (score >= 0 && score <= 5) ? score : DEFAULT_POINTS;
     }
 
     /**

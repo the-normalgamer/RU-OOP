@@ -3,14 +3,15 @@ package quiz;
 import java.util.function.Function;
 
 public abstract class Question {
-    public static final int DEFAULT_POINTS = 5;
+    public static final int DEFAULT_POINTS = 3;
+    protected int points;
     protected String question;
     protected String correctAnswer;
     protected Function<String, Integer> evaluation = s -> DEFAULT_POINTS;
 
     @Override
     public String toString(){
-        return ((this.question == null) ? "null" : this.question) + "\n";
+        return ((this.question == null) ? "null" : this.question);
     }
 
     /**
@@ -18,7 +19,8 @@ public abstract class Question {
      * @return whether the submitted answer results in at least 1 point
      */
     public boolean isCorrect(String answer) {
-        return evaluation.apply(answer) > 0;
+        int score = evaluation.apply(answer);
+        return score > 0;
     }
 
     /**
@@ -29,7 +31,11 @@ public abstract class Question {
         return evaluation.apply(answer);
     }
 
+    public int getScore() {
+        return this.points;
+    }
+
     public String getCorrectAnswer() {
-        return this.correctAnswer;
+        return correctAnswer;
     }
 }
