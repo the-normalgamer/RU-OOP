@@ -148,8 +148,11 @@ public class SlidingGame implements Configuration {
 	}
 
 	@Override
-	public int compareTo(Configuration g) { // TODO implement this forked up function
-		throw new UnsupportedOperationException("compareTo : not supported yet.");
+	public int compareTo(Configuration g) {
+		if (g instanceof SlidingGame game) {
+			return game.getManhattanDistance() - this.getManhattanDistance();
+		}
+		return 0;
 	}
 
 	@Override
