@@ -15,6 +15,7 @@ public class Solver {
 	public Solver(Configuration g) {
 		toExamine = new PriorityQueue<Configuration>();
 		toExamine.add(g);
+		encountered = new ArrayList<>();
 	}
 
 	/**
@@ -25,17 +26,20 @@ public class Solver {
 	public String solve() {
 		while (!toExamine.isEmpty()) {
 			Configuration next = toExamine.remove();
+
 			if (encountered.contains(next)){
 				continue;
 			}
-			encountered.add(next);
+
 			if (next.isSolution()) {
-				return next.toString();
+				String solution = "";
+				for (Configuration config: next.pathFromRoot().reversed())
+					solution += config.toString()+"n";
+				return solution;
 			} else {
-				for (Configuration succ : next.successors()) {
-					toExamine.add(succ);
-				}
+                toExamine.addAll(next.successors());
 			}
+			encountered.add(next);
 		}
 		return "Failure!";
 	}

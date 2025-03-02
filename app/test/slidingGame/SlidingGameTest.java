@@ -87,9 +87,9 @@ public class SlidingGameTest {
 	// one further away
 	@Test
 	public void testCompareTo() {
-		int[] dist1 = { 1, 2, 3, 4, 5, 6, 7, 9, 8 };
-		int[] distAlso1 = { 1, 2, 3, 4, 5, 9, 7, 8, 6 };
-		int[] dist10 = { 9, 2, 8, 4, 5, 6, 7, 3, 1 };
+		int[] dist1 = 		{ 1, 2, 3, 4, 5, 6, 7, 9, 8 };
+		int[] distAlso1 = 	{ 1, 2, 3, 4, 5, 9, 7, 8, 6 };
+		int[] dist10 = 		{ 9, 2, 8, 4, 5, 6, 7, 3, 1 };
 		SlidingGame gA = new SlidingGame(dist1);
 		SlidingGame gB = new SlidingGame(dist10);
 		SlidingGame gC = new SlidingGame(distAlso1);

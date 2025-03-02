@@ -58,10 +58,11 @@ public class SlidingGame implements Configuration {
 		int manhattanDist = 0;
 		for (int x = 0; x < this.dimensions; x++) {
 			for (int y = 0; y < this.dimensions; y++) {
-				int desiredX = this.board[x][y] % this.dimensions;
-				int desiredY = this.board[x][y] / this.dimensions;
-
-				manhattanDist += desiredX - x + desiredY - y;
+				if (this.board[x][y] == this.size) continue;
+				int desiredX = (this.board[x][y]-1) % this.dimensions;
+				int desiredY = (this.board[x][y]-1) / this.dimensions;
+				int addedDist = Math.abs(desiredX - x) + Math.abs(desiredY - y);
+				manhattanDist += addedDist;
 			}
 		}
 		this.manhattanDist = manhattanDist;
@@ -76,8 +77,10 @@ public class SlidingGame implements Configuration {
 		double sum = 0;
 		for (int x = 0; x < this.dimensions; x++) {
 			for (int y = 0; y < this.dimensions; y++) {
-				double pos = x + y * size;
-				sum += board[x][y] * Math.pow(31, pos);
+				double pos = y + x * this.dimensions;
+				int power = 1;
+				for (int i = 0; i < pos; i++) power*=31;
+				sum += board[x][y] * power;
 			}
 		}
 		// Cast to int at the end to avoid rounding prematurely
@@ -104,11 +107,14 @@ public class SlidingGame implements Configuration {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (o instanceof SlidingGame game) {
-			return game.board == this.board;
+	public boolean equals(Object o) {if (o instanceof SlidingGame game) {
+			int x,y;
+			//"readable code"
+			for (x = 0, y = 0; x < game.dimensions && y < game.dimensions; x++, y++) {
+				if (game.board[x][y] != this.board[x][y]) return false;
+			}
 		}
-		return false;
+		return true;
 	}
 
 	/**
@@ -116,9 +122,9 @@ public class SlidingGame implements Configuration {
 	 */
 	@Override
 	public boolean isSolution() {
-		for (int i = 0; i < size; i++) {
-			int x = i % dimensions;
-			int y = i / dimensions;
+		for (int i = 1; i < size; i++) {
+			int x = (i-1) % dimensions;
+			int y = (i-1) / dimensions;
 
 			if (this.board[x][y] != i) return false;
 		}
@@ -163,7 +169,7 @@ public class SlidingGame implements Configuration {
 	@Override
 	public int compareTo(Configuration g) {
 		if (g instanceof SlidingGame game) {
-			return game.getManhattanDistance() - this.getManhattanDistance();
+			return -(game.getManhattanDistance() - this.getManhattanDistance());
 		}
 		return 0;
 	}
