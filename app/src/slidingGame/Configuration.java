@@ -3,6 +3,7 @@ package slidingGame;
  * An interface for representing nodes in a state space.
  */
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -36,10 +37,12 @@ public interface Configuration extends Comparable<Configuration> {
 	 */
 	public default List<Configuration> pathFromRoot() {
 		Configuration currentConfig = this;
+		List<Configuration> configs = new ArrayList<>();
         while(currentConfig.getParent() != null){
+			configs.add(currentConfig);
 			currentConfig = currentConfig.getParent();
 		}
-		return (List<Configuration>) currentConfig.successors();
+		return configs;
 
 		//throw new UnsupportedOperationException("pathFromRoot: not supported yet.");
 	}
