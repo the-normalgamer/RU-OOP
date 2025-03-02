@@ -77,7 +77,10 @@ public class SlidingGame implements Configuration {
 
 	@Override
 	public boolean equals(Object o) {
-		throw new UnsupportedOperationException("equals : not supported yet.");
+		if (o instanceof SlidingGame game) {
+			return game.board == this.board;
+		}
+		return false;
 	}
 
 	/**
@@ -127,7 +130,7 @@ public class SlidingGame implements Configuration {
 	}
 
 	@Override
-	public int compareTo(Configuration g) {
+	public int compareTo(Configuration g) { // TODO implement this forked up function
 		throw new UnsupportedOperationException("compareTo : not supported yet.");
 	}
 
