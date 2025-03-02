@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * A template of a sliding game
+ * A sliding game
  */
 public class SlidingGame implements Configuration {
 
@@ -38,6 +38,8 @@ public class SlidingGame implements Configuration {
 				this.holeY = p / dimensions;
 			}
 		}
+
+		setManhattanDistance();
 	}
 
 	public SlidingGame(int[] start, int dimensions) {
@@ -50,6 +52,19 @@ public class SlidingGame implements Configuration {
 	public SlidingGame(int[] start, SlidingGame parent) {
 		this(start);
 		this.parent = parent;
+	}
+
+	private void setManhattanDistance() {
+		int manhattanDist = 0;
+		for (int x = 0; x < this.dimensions; x++) {
+			for (int y = 0; y < this.dimensions; y++) {
+				int desiredX = this.board[x][y] % this.dimensions;
+				int desiredY = this.board[x][y] / this.dimensions;
+
+				manhattanDist += desiredX - x + desiredY - y;
+			}
+		}
+		this.manhattanDist = manhattanDist;
 	}
 
 	public int getManhattanDistance() {
@@ -120,12 +135,15 @@ public class SlidingGame implements Configuration {
 			if (newHoleX >= 0 && newHoleX < dimensions && newHoleY >= 0 && newHoleY < dimensions) {
 				int[] list = toList(this);
 
-				SlidingGame newConfig = new SlidingGame(list, this);
+				SlidingGame successor = new SlidingGame(list, this);
 
-				successors.add(newConfig);
+				// Move the piece in Direction
+				successor.board[this.holeX][this.holeY] = this.board[newHoleX][newHoleY];
+				successor.board[newHoleX][newHoleY] = this.size;
+
+				successors.add(successor);
 			}
 		}
-
 		return successors;
 	}
 
