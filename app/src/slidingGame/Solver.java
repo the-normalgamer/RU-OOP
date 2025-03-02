@@ -8,12 +8,13 @@ import java.util.*;
  */
 public class Solver {
 	// A queue for maintaining states that are not visited yet.
-	private Queue<Configuration> toExamine;
+	private PriorityQueue<Configuration> toExamine;
 	// A collection of states that have been visited
 	private Collection<Configuration> encountered;
 
 	public Solver(Configuration g) {
-		throw new UnsupportedOperationException("Solver: not supported yet.");
+		toExamine = new PriorityQueue<Configuration>();
+		toExamine.add(g);
 	}
 
 	/**
@@ -34,7 +35,6 @@ public class Solver {
 				for (Configuration succ : next.successors()) {
 					toExamine.add(succ);
 				}
-
 			}
 		}
 		return "Failure!";
