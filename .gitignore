@@ -19,4 +19,5 @@ build
 # Ignore Build directory
 app/bin
 
+.idea
 

@@ -35,12 +35,13 @@ sourceSets {
 }
 
 application {
-    // Define the main class for the application.
-    mainClass = 'quiz.Main'
+  // Define the main class for the application.
+  mainClass = 'slidingGame.Main'
+  applicationDefaultJvmArgs = ['-Xmx4g']
 }
 
 run {
-    standardInput = System.in
+  standardInput = System.in
 }
 
 test {
