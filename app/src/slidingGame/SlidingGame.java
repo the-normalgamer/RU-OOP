@@ -8,7 +8,7 @@ import java.util.Collection;
  */
 public class SlidingGame implements Configuration {
 
-	private int manhattanDist = 1337;
+	private int manhattanDist;
 	public int dimensions = 3, size = dimensions * dimensions, hole = size;
 
 	/**
@@ -69,6 +69,19 @@ public class SlidingGame implements Configuration {
 
 	public int getManhattanDistance() {
 		return manhattanDist;
+	}
+
+	@Override
+	public int hashCode() {
+		double sum = 0;
+		for (int x = 0; x < this.dimensions; x++) {
+			for (int y = 0; y < this.dimensions; y++) {
+				double pos = x + y * size;
+				sum += board[x][y] * Math.pow(31, pos);
+			}
+		}
+		// Cast to int at the end to avoid rounding prematurely
+		return (int) sum;
 	}
 
 	/**

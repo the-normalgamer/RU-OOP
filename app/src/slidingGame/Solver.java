@@ -34,7 +34,6 @@ public class Solver {
 				for (Configuration succ : next.successors()) {
 					toExamine.add(succ);
 				}
-
 			}
 		}
 		return "Failure!";
