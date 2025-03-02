@@ -35,7 +35,13 @@ public interface Configuration extends Comparable<Configuration> {
 	 * @return a list of successive configurations from the root to 'this'
 	 */
 	public default List<Configuration> pathFromRoot() {
-		throw new UnsupportedOperationException("pathFromRoot: not supported yet.");
+		Configuration currentConfig = this;
+        while(currentConfig.getParent() != null){
+			currentConfig = currentConfig.getParent();
+		}
+		return (List<Configuration>) currentConfig.successors();
+
+		//throw new UnsupportedOperationException("pathFromRoot: not supported yet.");
 	}
 
 }
