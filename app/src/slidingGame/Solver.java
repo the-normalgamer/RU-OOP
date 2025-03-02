@@ -24,12 +24,17 @@ public class Solver {
 	public String solve() {
 		while (!toExamine.isEmpty()) {
 			Configuration next = toExamine.remove();
+			if (encountered.contains(next)){
+				continue;
+			}
+			encountered.add(next);
 			if (next.isSolution()) {
 				return next.toString();
 			} else {
 				for (Configuration succ : next.successors()) {
 					toExamine.add(succ);
 				}
+
 			}
 		}
 		return "Failure!";
