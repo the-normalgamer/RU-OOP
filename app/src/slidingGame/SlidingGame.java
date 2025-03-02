@@ -2,41 +2,54 @@ package slidingGame;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * A template of a sliding game
  */
 public class SlidingGame implements Configuration {
 
-	public static final int N = 3, SIZE = N * N, HOLE = SIZE;
+	private int manhattanDist = 1337;
+	public int dimensions = 3, size = dimensions * dimensions, hole = size;
+
 	/**
 	 * The board is represented by a 2-dimensional array; the position of the hole
 	 * is kept in 2 variables holeX and holeY
 	 */
 	private int[][] board;
 	private int holeX, holeY;
-	private int manhattanDist = 1337;
+	private SlidingGame parent;
 
 	/**
-	 * A constructor that initializes the board with the specified array
+	 * A constructor that initializes the <code>board[X][Y]</code> with the specified array
 	 *
-	 * @param start: a one dimensional array containing the initial board. The
-	 *               elements of start are stored row-wise.
+	 * @param start A one dimensional array containing the initial board. The
+	 *              elements of start are stored row-wise.
 	 */
 	public SlidingGame(int[] start) {
-		board = new int[N][N];
+		this.board = new int[dimensions][dimensions];
+		// I'm aware the this. aren't necessary, but we prefer to use it still for clarity.
 
-		assert start.length == N * N : "Length of specified board incorrect";
+		assert start.length == dimensions * dimensions : "Length of specified board incorrect";
 
 		for (int p = 0; p < start.length; p++) {
-			board[p % N][p / N] = start[p];
-			if (start[p] == HOLE) {
-				holeX = p % N;
-				holeY = p / N;
+			this.board[p % dimensions][p / dimensions] = start[p];
+			if (start[p] == hole) {
+				this.holeX = p % dimensions;
+				this.holeY = p / dimensions;
 			}
 		}
+	}
+
+	public SlidingGame(int[] start, int dimensions) {
+		this(start);
+		this.dimensions = dimensions;
+		this.size = dimensions * dimensions;
+		this.hole = this.size;
+	}
+
+	public SlidingGame(int[] start, SlidingGame parent) {
+		this(start);
+		this.parent = parent;
 	}
 
 	public int getManhattanDistance() {
@@ -52,10 +65,10 @@ public class SlidingGame implements Configuration {
 	@Override
 	public String toString() {
 		StringBuilder buf = new StringBuilder();
-		for (int row = 0; row < N; row++) {
-			for (int col = 0; col < N; col++) {
-				int puzzel = board[col][row];
-				buf.append(puzzel == HOLE ? "  " : puzzel + " ");
+		for (int row = 0; row < dimensions; row++) {
+			for (int col = 0; col < dimensions; col++) {
+				int puzzle = board[col][row];
+				buf.append(puzzle == hole ? "  " : puzzle + " ");
 			}
 			buf.append("\n");
 		}
@@ -67,14 +80,50 @@ public class SlidingGame implements Configuration {
 		throw new UnsupportedOperationException("equals : not supported yet.");
 	}
 
+	/**
+	 * @return Whether the current configuration is solved.
+	 */
 	@Override
 	public boolean isSolution() {
-		throw new UnsupportedOperationException("isGoal : not supported yet.");
+		for (int i = 0; i < size; i++) {
+			int x = i % dimensions;
+			int y = i / dimensions;
+
+			if (this.board[x][y] != i) return false;
+		}
+		return true;
+	}
+
+	public static int[] toList(SlidingGame game) {
+		int[] list = new int[game.size];
+
+		for (int x = 0; x < game.dimensions; x++) {
+			for (int y = 0; y < game.dimensions; y++) {
+				list[x + y * game.dimensions] = game.board[x][y];
+			}
+		}
+
+		return list;
 	}
 
 	@Override
 	public Collection<Configuration> successors() {
-		throw new UnsupportedOperationException("successors : not supported yet.");
+		Collection<Configuration> successors = new ArrayList<>();
+
+		for (Direction direction : Direction.values()) {
+			int newHoleX = this.holeX + direction.getDX();
+			int newHoleY = this.holeY + direction.getDY();
+
+			if (newHoleX >= 0 && newHoleX < dimensions && newHoleY >= 0 && newHoleY < dimensions) {
+				int[] list = toList(this);
+
+				SlidingGame newConfig = new SlidingGame(list, this);
+
+				successors.add(newConfig);
+			}
+		}
+
+		return successors;
 	}
 
 	@Override
@@ -84,7 +133,7 @@ public class SlidingGame implements Configuration {
 
 	@Override
 	public Configuration getParent() {
-		throw new UnsupportedOperationException("parent: Not supported yet.");
+		return this.parent;
 	}
 
 }
