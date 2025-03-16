@@ -3,6 +3,8 @@ package expressions.two_arguments;
 import expressions.Expression;
 import expressions.no_argument.Constant;
 
+import java.util.Map;
+
 public class Multiplication extends TwoArgExpr {
     public Multiplication(Expression valueA, Expression valueB) {
         this.valueA = valueA;
@@ -12,6 +14,11 @@ public class Multiplication extends TwoArgExpr {
     @Override
     public String toString() {
         return "(" + this.valueA + " * " + this.valueB + ")";
+    }
+
+    @Override
+    public double eval(Map<String, Double> env) {
+        return this.valueA.eval(env) * this.valueB.eval(env);
     }
 
     @Override
@@ -31,6 +38,6 @@ public class Multiplication extends TwoArgExpr {
             if (c.getValue() == 1.0) return valueA;
         }
         // This is already the most simplified
-        return this;
+        return super.partialEval();
     }
 }

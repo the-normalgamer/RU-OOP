@@ -16,6 +16,6 @@ public abstract class OneArgExpr implements Expression {
 
     @Override
     public Expression partialEval() {
-        return null;
+        return this;
     }
 }

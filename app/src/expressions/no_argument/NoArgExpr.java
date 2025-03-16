@@ -14,10 +14,4 @@ public abstract class NoArgExpr implements Expression {
     public Expression partialEval() {
         return this;
     }
-
-    @Override
-    public String toString() {
-        return String.valueOf(this.value);
-    }
-
 }
