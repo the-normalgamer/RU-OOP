@@ -6,4 +6,8 @@ public class Constant extends NoArgExpr {
     public Constant(double value) {
         this.value = value;
     }
+
+    public double getValue() {
+        return this.value;
+    }
 }

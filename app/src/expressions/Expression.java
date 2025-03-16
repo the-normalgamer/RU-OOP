@@ -9,8 +9,7 @@ public interface Expression {
 	public Expression partialEval();
 
 	// Return a value only if it is a Constant
-	default public Double getConstantValue()
-	{
+	default public Double getConstantValue() {
 		return null;
 	}
 }
