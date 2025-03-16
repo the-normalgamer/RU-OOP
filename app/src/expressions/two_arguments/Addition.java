@@ -13,7 +13,7 @@ public class Addition extends TwoArgExpr {
 
     @Override
     public String toString() {
-        return "(" + this.valueA + " + " + this.valueB + ")";
+        return "(" + this.valueA + "+" + this.valueB + ")";
     }
 
     @Override
@@ -39,6 +39,6 @@ public class Addition extends TwoArgExpr {
             return simplifiedA;
         }
         // This is already the most simplified
-        return super.partialEval();
+        return new Addition(simplifiedA, simplifiedB);
     }
 }

@@ -12,12 +12,14 @@ public class Negate extends OneArgExpr {
 
     @Override
     public Expression partialEval() {
+        Expression simplified = this.value.partialEval();
+
         // If the value is a (negatable) constant
-        if (value instanceof Constant c) {
+        if (simplified instanceof Constant c) {
             return new Constant(-c.getValue());
         }
         // This is already the most simplified
-        return this.value.partialEval();
+        return new Negate(simplified);
     }
 
     @Override

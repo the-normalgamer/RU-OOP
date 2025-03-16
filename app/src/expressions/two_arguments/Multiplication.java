@@ -13,7 +13,7 @@ public class Multiplication extends TwoArgExpr {
 
     @Override
     public String toString() {
-        return "(" + this.valueA + " * " + this.valueB + ")";
+        return "(" + this.valueA + "*" + this.valueB + ")";
     }
 
     @Override
@@ -41,6 +41,6 @@ public class Multiplication extends TwoArgExpr {
             if (c.getValue() == 1.0) return simplifiedA;
         }
         // This is already the most simplified
-        return super.partialEval();
+        return new Multiplication(simplifiedA, simplifiedB);
     }
 }
