@@ -20,19 +20,23 @@ public class Addition extends TwoArgExpr {
     public double eval(Map<String, Double> env) {
         return this.valueA.eval(env) + this.valueB.eval(env);
     }
+
     @Override
     public Expression partialEval() {
+        Expression simplifiedA = this.valueA.partialEval();
+        Expression simplifiedB = this.valueB.partialEval();
+
         // If both are constants
-        if (this.valueA instanceof Constant cA && this.valueB instanceof Constant cB) {
+        if (simplifiedA instanceof Constant cA && simplifiedB instanceof Constant cB) {
             return new Constant(cA.getValue() + cB.getValue());
         }
         // If A is 0, return B
-        if (this.valueA instanceof Constant c && c.getValue() == 0.0) {
-            return valueB;
+        if (simplifiedA instanceof Constant c && c.getValue() == 0.0) {
+            return simplifiedB;
         }
         // If B is 0, return A
-        if (this.valueB instanceof Constant c && c.getValue() == 0.0) {
-            return valueA;
+        if (simplifiedB instanceof Constant c && c.getValue() == 0.0) {
+            return simplifiedA;
         }
         // This is already the most simplified
         return super.partialEval();

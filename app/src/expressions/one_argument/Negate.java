@@ -17,7 +17,7 @@ public class Negate extends OneArgExpr {
             return new Constant(-c.getValue());
         }
         // This is already the most simplified
-        return super.partialEval();
+        return this.value.partialEval();
     }
 
     @Override

@@ -23,19 +23,22 @@ public class Multiplication extends TwoArgExpr {
 
     @Override
     public Expression partialEval() {
+        Expression simplifiedA = this.valueA.partialEval();
+        Expression simplifiedB = this.valueB.partialEval();
+
         // If both are constants
-        if (this.valueA instanceof Constant cA && this.valueB instanceof Constant cB) {
+        if (simplifiedA instanceof Constant cA && simplifiedB instanceof Constant cB) {
             return new Constant(cA.getValue() * cB.getValue());
         }
         // If A is a constant (as per above either A or B are not)
-        if (this.valueA instanceof Constant c) {
+        if (simplifiedA instanceof Constant c) {
             if (c.getValue() == 0.0) return new Constant(0);
-            if (c.getValue() == 1.0) return valueB;
+            if (c.getValue() == 1.0) return simplifiedB;
         }
         // If B is a constant (as per above either A or B are not)
-        if (this.valueB instanceof Constant c) {
+        if (simplifiedB instanceof Constant c) {
             if (c.getValue() == 0.0) return new Constant(0);
-            if (c.getValue() == 1.0) return valueA;
+            if (c.getValue() == 1.0) return simplifiedA;
         }
         // This is already the most simplified
         return super.partialEval();
