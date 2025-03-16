@@ -1,24 +1,30 @@
 package expressions;
 
+import expressions.no_argument.Constant;
+import expressions.no_argument.Variable;
+import expressions.one_argument.Negate;
+import expressions.two_arguments.Addition;
+import expressions.two_arguments.Multiplication;
+
 public class ExpressionFactory {
 
 	public static Expression var(String x) {
-		return null;
+		return new Variable(x);
 	}
 
 	public static Expression con(Double x) {
-		return null;
+		return new Constant(x);
 	}
 
 	public static Expression add(Expression x, Expression y) {
-		return null;
+		return new Addition(x,y);
 	}
 
 	public static Expression mul(Expression x, Expression y) {
-		return null;
+		return new Multiplication(x,y);
 	}
 
 	public static Expression neg(Expression x) {
-		return null;
+		return new Negate(x);
 	}
 }
