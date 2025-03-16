@@ -1,4 +1,4 @@
 package expressions.two_arguments;
 
-public class Addition extends twoArgExpr{
+public class Addition extends TwoArgExpr {
 }

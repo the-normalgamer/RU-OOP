@@ -12,6 +12,6 @@ public abstract class NoArgExpr implements Expression {
 
     @Override
     public Expression partialEval() {
-        return null;
+        return this;
     }
 }
