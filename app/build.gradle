@@ -35,9 +35,8 @@ sourceSets {
 }
 
 application {
-  // Define the main class for the application.
-  mainClass = 'slidingGame.Main'
-  applicationDefaultJvmArgs = ['-Xmx4g']
+    // Define the main class for the application.
+    mainClass = 'expressions.Main'
 }
 
 run {
