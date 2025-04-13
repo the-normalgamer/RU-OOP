@@ -2,7 +2,19 @@ package quadtrees;
 
 import java.io.Writer;
 
-public class GreyNode implements QuadTreeNode{
+public class GreyNode implements QuadTreeNode {
+    private final QuadTreeNode topLeft;
+    private final QuadTreeNode topRight;
+    private final QuadTreeNode bottomLeft;
+    private final QuadTreeNode bottomRight;
+
+    public GreyNode(QuadTreeNode topLeft, QuadTreeNode topRight, QuadTreeNode bottomLeft, QuadTreeNode bottomRight) {
+        this.topLeft = topLeft;
+        this.topRight = topRight;
+        this.bottomLeft = bottomLeft;
+        this.bottomRight = bottomRight;
+    }
+
     /**
      * @param x
      * @param y

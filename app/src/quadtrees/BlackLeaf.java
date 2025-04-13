@@ -1,5 +1,6 @@
 package quadtrees;
 
+import java.io.IOException;
 import java.io.Writer;
 
 public class BlackLeaf implements QuadTreeNode {
@@ -19,6 +20,10 @@ public class BlackLeaf implements QuadTreeNode {
      */
     @Override
     public void writeNode(Writer out) {
-
+        try {
+            out.write("00");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

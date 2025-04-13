@@ -142,4 +142,28 @@ public class ExpressionTest {
 		assertEquals("-3.0", e.toString());
 		assertEquals("-3.0", e2.toString());
 	}
+
+	@Test
+	public void testDoubleNeg1() {
+		e = neg(neg(con(1.0)));
+		e2 = e.partialEval();
+		// Double negations should cancel out
+		assertEquals("1.0", e2.toString());
+	}
+
+	@Test
+	public void testDoubleNeg2() {
+		e = neg(con(-1.0));
+		e2 = e.partialEval();
+		// Double negations should cancel out
+		assertEquals("1.0", e2.toString());
+	}
+
+	@Test
+	public void testDoubleNeg3() {
+		e = neg(neg(neg(neg(neg(con(-1.0))))));
+		e2 = e.partialEval();
+		// Many negations should cancel out
+		assertEquals("1.0", e2.toString());
+	}
 }
