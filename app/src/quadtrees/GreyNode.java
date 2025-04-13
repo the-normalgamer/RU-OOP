@@ -1,5 +1,6 @@
 package quadtrees;
 
+import java.io.IOException;
 import java.io.Writer;
 
 public class GreyNode implements QuadTreeNode {
@@ -15,22 +16,21 @@ public class GreyNode implements QuadTreeNode {
         this.bottomRight = bottomRight;
     }
 
-    /**
-     * @param x
-     * @param y
-     * @param width
-     * @param bitmap
-     */
     @Override
     public void fillBitmap(int x, int y, int width, Bitmap bitmap) {
 
     }
 
-    /**
-     * @param out
-     */
     @Override
     public void writeNode(Writer out) {
-
+        try {
+            out.write("1");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        topLeft.writeNode(out);
+        topRight.writeNode(out);
+        bottomLeft.writeNode(out);
+        bottomRight.writeNode(out);
     }
 }
