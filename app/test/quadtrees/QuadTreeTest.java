@@ -73,6 +73,7 @@ public class QuadTreeTest {
 		assertEquals("00", w.toString());
 	}
 
+	@Test
 	public void writeAllBlack4x4() {
 		Bitmap b4x4 = new Bitmap(4, 4);
 		b4x4.fillArea(0, 0, 4, false);
@@ -95,6 +96,7 @@ public class QuadTreeTest {
 		assertEquals("01", w.toString());
 	}
 
+	@Test
 	public void writeAllWhite4x4() {
 		Bitmap b4x4 = new Bitmap(4, 4);
 		b4x4.fillArea(0, 0, 4, true);

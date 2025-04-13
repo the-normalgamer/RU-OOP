@@ -20,4 +20,6 @@ build
 app/bin
 
 .idea
+out/
+app/
 
