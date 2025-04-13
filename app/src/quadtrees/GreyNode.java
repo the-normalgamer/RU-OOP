@@ -23,7 +23,12 @@ public class GreyNode implements QuadTreeNode {
      */
     @Override
     public void fillBitmap(int x, int y, int width, Bitmap bitmap) {
+        int halfWidth = width / 2;
 
+        topLeft.fillBitmap    (x,             y,             halfWidth, bitmap);
+        topRight.fillBitmap   (x + halfWidth, y,             halfWidth, bitmap);
+        bottomLeft.fillBitmap (x,             y + halfWidth, halfWidth, bitmap);
+        bottomRight.fillBitmap(x + halfWidth, y + halfWidth, halfWidth, bitmap);
     }
 
     /**

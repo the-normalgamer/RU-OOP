@@ -12,7 +12,7 @@ public class BlackLeaf implements QuadTreeNode {
      */
     @Override
     public void fillBitmap(int x, int y, int width, Bitmap bitmap) {
-
+        bitmap.fillArea(x, y, width, false);
     }
 
     /**

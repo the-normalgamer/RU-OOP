@@ -88,4 +88,13 @@ public class Bitmap {
 		}
 	}
 
+	public boolean areaSameColor(int x, int y, int size) {
+		boolean color = this.getBit(x, y);
+		for (int c = 0; c < size; c++) {
+			for (int r = 0; r < size; r++) {
+				if (this.getBit(c, r) != color) return false;
+			}
+		}
+		return true;
+	}
 }

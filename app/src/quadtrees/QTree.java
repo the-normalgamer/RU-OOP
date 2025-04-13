@@ -27,7 +27,23 @@ public class QTree {
 	}
 
 	public static QuadTreeNode bitmap2QTree(int x, int y, int width, Bitmap bitmap) {
-		return null;
+		int halfWidth = width / 2;
+		QuadTreeNode node;
+
+		boolean color = bitmap.getBit(x, y);
+
+		if (bitmap.areaSameColor(x, y, width)) {
+			node = color ? new WhiteLeaf() : new BlackLeaf();
+		} else {
+			node = new GreyNode(
+					bitmap2QTree(x,             y,             halfWidth, bitmap),
+					bitmap2QTree(x + halfWidth, y,             halfWidth, bitmap),
+					bitmap2QTree(x,             y + halfWidth, halfWidth, bitmap),
+					bitmap2QTree(x + halfWidth, y + halfWidth, halfWidth, bitmap)
+			);
+		}
+
+		return node;
 	}
 
 }
