@@ -14,6 +14,8 @@ public class GreyNode implements QuadTreeNode {
         this.topRight = topRight;
         this.bottomLeft = bottomLeft;
         this.bottomRight = bottomRight;
+
+
     }
 
     @Override
@@ -22,8 +24,8 @@ public class GreyNode implements QuadTreeNode {
 
         topLeft.fillBitmap    (x,             y,             halfWidth, bitmap);
         topRight.fillBitmap   (x + halfWidth, y,             halfWidth, bitmap);
-        bottomLeft.fillBitmap (x,             y + halfWidth, halfWidth, bitmap);
-        bottomRight.fillBitmap(x + halfWidth, y + halfWidth, halfWidth, bitmap);
+        bottomRight.fillBitmap (x,             y + halfWidth, halfWidth, bitmap);
+        bottomLeft.fillBitmap(x + halfWidth, y + halfWidth, halfWidth, bitmap);
     }
 
     @Override
@@ -35,7 +37,8 @@ public class GreyNode implements QuadTreeNode {
         }
         topLeft.writeNode(out);
         topRight.writeNode(out);
-        bottomLeft.writeNode(out);
         bottomRight.writeNode(out);
+        bottomLeft.writeNode(out);
+
     }
 }
