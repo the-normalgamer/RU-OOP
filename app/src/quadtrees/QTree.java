@@ -25,13 +25,13 @@ public class QTree {
 
 	private static QuadTreeNode readQTree(Reader input) {
 		try {
-			int data = input.read();
+			char data = (char) input.read();
 
-			if (data == 1) {
+			if (data == '1') {
 				return new GreyNode(readQTree(input), readQTree(input), readQTree(input), readQTree(input));
 			}
 
-			return input.read() == 1 ? new WhiteLeaf() : new BlackLeaf();
+			return input.read() == '1' ? new WhiteLeaf() : new BlackLeaf();
 
 		} catch (IOException e) {
 			System.out.println("error:" + e);
