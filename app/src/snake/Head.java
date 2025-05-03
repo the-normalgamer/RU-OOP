@@ -26,18 +26,26 @@ public class Head extends Mover {
   }
 
   public void step() {
+    if (!isAlive.getValue()) return;
+
     World world = getWorld();
     Food food = world.getFood();
 
     tryToMove();
+    Segment body = this.getBody();
+
+    if (body.bitesItself(this))
+      isAlive.set(false);
+
 
     // If it's still alive after trying to move
     if (isAlive.getValue()) {
-      Segment body = this.getBody();
 
       if (    this.xPosProperty().intValue() == food.xPosProperty().intValue()
            && this.yPosProperty().intValue() == food.yPosProperty().intValue()) {
         // FOOD!!
+        world.eatFood();
+
         // Make a new segment for the head, setting its nextSegment to be the current segment
         this.bodyProperty = new SimpleObjectProperty<>(new BodySegment(body, this.getDirection(), this.getXPos(), this.getYPos(), world));
 
@@ -47,9 +55,6 @@ public class Head extends Mover {
       }
 
     }
-
-    // TODO: implement a step in the game. Move the snake if possible, increasing
-    // its length when it eats food, and setting properties accordingly.
   }
 
   private void tryToMove() {
