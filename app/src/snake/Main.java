@@ -22,7 +22,7 @@ import java.sql.Time;
  */
 public class Main extends Application {
     public final static int DELAY = 200;
-    // private boolean isRunning = false;
+     private boolean isRunning = false;
 
     @Override
     public void start(Stage stage) throws Exception {

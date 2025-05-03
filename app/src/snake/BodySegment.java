@@ -22,5 +22,4 @@ public class BodySegment extends Segment {
   public boolean bitesItself(Head head) {
     return sameLocation(head) || nextSegment.bitesItself(head);
   }
-
 }

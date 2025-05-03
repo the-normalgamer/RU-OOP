@@ -21,9 +21,8 @@ public abstract class Mover extends Actor {
   }
 
   public void move() {
-    // TODO: implement movement using Actor.setLocation and the current direction.
-    
-    // End
+    this.setLocation(this.getXPos() + this.direction.getDX(),
+                     this.getYPos() + this.direction.getDY());
   }
 
   private boolean checkRange(int val, int minVal, int maxVal) {
@@ -31,11 +30,7 @@ public abstract class Mover extends Actor {
   }
 
   public boolean canMove() {
-    // TODO: implement a check if the Actor object can move given the boundaries of
-    // the world, which can be retrieved by getWorld().getWidth() for the width.
-    // Use Mover.checkRange (above) and the current x and y position and direction.
-    return false;
-    // End
+    return checkRange(this.getXPos() + this.direction.getDX(), 0, getWorld().getWidth())
+        && checkRange(this.getYPos() + this.direction.getDY(), 0, getWorld().getHeight());
   }
-
 }
