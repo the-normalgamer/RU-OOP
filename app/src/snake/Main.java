@@ -14,6 +14,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.sql.Time;
+
 /**
  *
  * @version 1.0
@@ -36,7 +38,9 @@ public class Main extends Application {
         root.setRight(ui);
 
         // TODO: Implement timeline
-
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500), e -> world.getHead().step()));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
         // End
 
         Scene scene = new Scene(root);
