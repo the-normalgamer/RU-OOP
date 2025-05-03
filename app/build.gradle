@@ -33,24 +33,9 @@ sourceSets {
       srcDirs = ["src"]
     }
   }
-  test {
-    java {
-      srcDirs = ["test"]
-    }
-  }
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'properties.WarmUp'
-}
-
-run {
-  standardInput = System.in
-}
-
-test {
-    testLogging {
-        exceptionFormat = 'full'
-    }
+    mainClass = 'snake.Main'
 }
