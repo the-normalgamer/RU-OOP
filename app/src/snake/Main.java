@@ -6,6 +6,7 @@ import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -23,7 +24,7 @@ import java.sql.Time;
 public class Main extends Application {
     public final static int DELAY = 200;
      private boolean isRunning = false;
-
+    private Timeline timeline;
     @Override
     public void start(Stage stage) throws Exception {
         World world = new World();
@@ -38,7 +39,7 @@ public class Main extends Application {
         root.setRight(ui);
 
         // TODO: Implement timeline
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500), e -> world.getHead().step()));
+        timeline = new Timeline(new KeyFrame(Duration.millis(500), e -> world.getHead().step()));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
         // End
@@ -55,10 +56,34 @@ public class Main extends Application {
 
     private void keyHandler(KeyEvent keyEvent, World world) {
         // TODO: Implement keyboard controls
+        switch (keyEvent.getCode()){
+            case KeyCode.UP:
+            case KeyCode.W:
+                world.getHead().setDirection(Direction.NORTH);
+                break;
+            case KeyCode.DOWN:
+            case KeyCode.S:
+                world.getHead().setDirection(Direction.SOUTH);
+                break;
+            case KeyCode.LEFT:
+            case KeyCode.A:
+                world.getHead().setDirection(Direction.WEST);
+                break;
+            case KeyCode.RIGHT:
+            case KeyCode.D:
+                world.getHead().setDirection(Direction.EAST);
+                break;
+            case KeyCode.SPACE:
+                isRunning = !isRunning;
+                if (isRunning) timeline.play();
+                else timeline.pause();
+        }
+
     }
 
     private void mouseHandler(MouseEvent mouseEvent, World world) {
         // TODO: Implement mouse
+        new Food((int) mouseEvent.getX(),(int) mouseEvent.getY(),world);
     }
 
     public static Pane createUserInterface(World world) {
