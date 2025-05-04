@@ -25,7 +25,6 @@ import java.sql.Time;
  */
 public class Main extends Application {
     public final static int DELAY = 200;
-    private boolean isRunning = false;
     private Timeline timeline;
 
     @Override
@@ -57,11 +56,12 @@ public class Main extends Application {
     private void keyHandler(KeyEvent keyEvent, World world) {
         switch (keyEvent.getCode()){
             case KeyCode.SPACE:
-                isRunning = !isRunning;
-                if (isRunning) timeline.play();
+                world.setRunning(!world.getRunningProperty().getValue());
+
+                if (world.getRunningProperty().getValue()) timeline.play();
                 else timeline.pause();
 
-            if (!isRunning) return; // Other controls are only allowed to be registered when the game isn't paused
+            if (!world.getRunningProperty().getValue()) return; // Other controls are only allowed to be registered when the game isn't paused
 
             case KeyCode.UP:
             case KeyCode.W:
@@ -96,10 +96,15 @@ public class Main extends Application {
 
         scoreText.textProperty().bind(Bindings.concat("Score: ", world.getScoreProperty()));
 
-        StringBinding pauseState = Bindings.when(world.getRunningProperty()).then("").otherwise("Paused");
-        StringBinding gameState = Bindings.when(world.getHead().isAliveProperty()).then(pauseState).otherwise("GAME OVER");
+        StringBinding pauseState = Bindings.when(
+                Bindings.and(
+                        Bindings.not(world.getRunningProperty()),
+                        world.getHead().isAliveProperty()
+                )
+        ).then("Paused").otherwise("");
+        StringBinding gameState = Bindings.when(world.getHead().isAliveProperty()).then("").otherwise("GAME OVER");
 
-        runningText.textProperty().bind(gameState);
+        runningText.textProperty().bind(Bindings.concat(pauseState, gameState));
 
         // End
 
