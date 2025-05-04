@@ -9,12 +9,6 @@ public class TailSegment extends Segment {
   }
 
   @Override
-  public void follow(Direction newDirection) {
-    move();
-    setDirection(newDirection);
-  }
-
-  @Override
   public boolean bitesItself(Head head) {
     return sameLocation(head);
   }

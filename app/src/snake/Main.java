@@ -4,6 +4,8 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.StringBinding;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -23,25 +25,23 @@ import java.sql.Time;
  */
 public class Main extends Application {
     public final static int DELAY = 200;
-     private boolean isRunning = false;
+    private boolean isRunning = false;
     private Timeline timeline;
+
     @Override
     public void start(Stage stage) throws Exception {
         World world = new World();
-        Pane worldPane = new WorldView(world);
         Pane ui = createUserInterface(world);
         BorderPane root = new BorderPane();
 
-        worldPane.setStyle("-fx-background-color: #30B080;");
+        world.getPane().setStyle("-fx-background-color: #30B080;");
         ui.setPadding(new javafx.geometry.Insets(10));
 
-        root.setLeft(worldPane);
+        root.setLeft(world.getPane());
         root.setRight(ui);
 
-        // TODO: Implement timeline
-        timeline = new Timeline(new KeyFrame(Duration.millis(500), e -> world.getHead().step()));
+        timeline = new Timeline(new KeyFrame(Duration.millis(DELAY), e -> world.getHead().step()));
         timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
         // End
 
         Scene scene = new Scene(root);
@@ -49,14 +49,20 @@ public class Main extends Application {
         scene.setOnKeyPressed(keyEvent -> keyHandler(keyEvent, world));
         scene.setOnMouseClicked(mouseEvent -> mouseHandler(mouseEvent, world));
 
-        stage.setTitle("Snake");
+        stage.setTitle("SNEK");
         stage.setScene(scene);
         stage.show();
     }
 
     private void keyHandler(KeyEvent keyEvent, World world) {
-        // TODO: Implement keyboard controls
         switch (keyEvent.getCode()){
+            case KeyCode.SPACE:
+                isRunning = !isRunning;
+                if (isRunning) timeline.play();
+                else timeline.pause();
+
+            if (!isRunning) return; // Other controls are only allowed to be registered when the game isn't paused
+
             case KeyCode.UP:
             case KeyCode.W:
                 world.getHead().setDirection(Direction.NORTH);
@@ -73,26 +79,27 @@ public class Main extends Application {
             case KeyCode.D:
                 world.getHead().setDirection(Direction.EAST);
                 break;
-            case KeyCode.SPACE:
-                isRunning = !isRunning;
-                if (isRunning) timeline.play();
-                else timeline.pause();
         }
 
     }
 
     private void mouseHandler(MouseEvent mouseEvent, World world) {
-        // TODO: Implement mouse
-        new Food((int) mouseEvent.getX(),(int) mouseEvent.getY(),world);
+        double grid_size = WorldView.getGridSize();
+        new Food((int) (mouseEvent.getX() / grid_size),(int) (mouseEvent.getY() / grid_size), world);
     }
 
     public static Pane createUserInterface(World world) {
         VBox ui = new VBox();
 
         Label scoreText = new Label();
-        Label runningText = new Label("Press 'space' to start");
+        Label runningText = new Label();
 
-        // TODO: Implement user interface
+        scoreText.textProperty().bind(Bindings.concat("Score: ", world.getScoreProperty()));
+
+        StringBinding pauseState = Bindings.when(world.getRunningProperty()).then("").otherwise("Paused");
+        StringBinding gameState = Bindings.when(world.getHead().isAliveProperty()).then(pauseState).otherwise("GAME OVER");
+
+        runningText.textProperty().bind(gameState);
 
         // End
 

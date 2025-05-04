@@ -13,9 +13,8 @@ public class BodySegment extends Segment {
 
   @Override
   public void follow(Direction newDirection) {
-    move();
     nextSegment.follow(getDirection());
-    setDirection(newDirection);
+    super.follow(newDirection);
   }
 
   @Override

@@ -35,7 +35,7 @@ public class WorldView extends Pane {
     setPrefSize(world.getWidth() * UNIT, world.getHeight() * UNIT);
   }
 
-  private Circle addMoverView(Mover mover, double radius, Color color) {
+  public Circle addMoverView(Mover mover, double radius, Color color) {
     Circle circle = new Circle(UNIT / 2, UNIT / 2, radius, color);
     bindLocation(mover, circle);
     getChildren().add(circle);
@@ -43,8 +43,15 @@ public class WorldView extends Pane {
   }
 
   private void bindLocation(Actor actor, Shape actorView) {
-    actorView.translateXProperty().bind(actor.xPosProperty().multiply(UNIT));
-    actorView.translateYProperty().bind(actor.yPosProperty().multiply(UNIT));
+    // TODO This was changed for debugging the directions, revert changes after
+    actorView.translateXProperty().bind(actor.xPosProperty().multiply(UNIT)
+            .add((actor instanceof Segment seg) ? seg.getDirection().getDX() * 5 : 0));
+    actorView.translateYProperty().bind(actor.yPosProperty().multiply(UNIT)
+            .add((actor instanceof Segment seg) ? seg.getDirection().getDY() * 5 : 0));
+  }
+
+  public static double getGridSize() {
+    return UNIT;
   }
 
 }

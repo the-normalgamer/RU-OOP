@@ -8,7 +8,10 @@ public abstract class Segment extends Mover {
     super(direction, xPos, yPos, world);
   }
 
-  public abstract void follow(Direction newDirection);
+    public void follow(Direction newDirection) {
+      move();
+      setDirection(newDirection);
+    }
 
-  public abstract boolean bitesItself(Head head);
+    public abstract boolean bitesItself(Head head);
 }

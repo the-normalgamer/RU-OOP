@@ -6,6 +6,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.scene.layout.Pane;
 
 /**
  * World keeps track of the state of a game of snake
@@ -15,6 +16,7 @@ public class World {
 
   private final Food food;
   private final Head head;
+  private final Pane pane;
 
   private final Random numberGenerator = new Random();
 
@@ -25,6 +27,8 @@ public class World {
   public World() {
     food = new Food(numberGenerator.nextInt(WIDTH), numberGenerator.nextInt(HEIGHT), this);
     head = randomSnake();
+
+    pane = new WorldView(this);
   }
 
   public void setRunning(boolean running) {
@@ -78,6 +82,10 @@ public class World {
   public void eatFood() {
     food.setLocation(numberGenerator.nextInt(WIDTH), numberGenerator.nextInt(HEIGHT));
     setScore(getScore() + 1);
+  }
+
+  public Pane getPane() {
+    return pane;
   }
 
 }

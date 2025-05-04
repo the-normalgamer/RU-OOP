@@ -4,6 +4,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.paint.Color;
 
 /**
  * Represents the head part of the snake
@@ -32,7 +33,7 @@ public class Head extends Mover {
     Food food = world.getFood();
 
     tryToMove();
-    Segment body = this.getBody();
+    Segment body = getBody();
 
     if (body.bitesItself(this))
       isAlive.set(false);
@@ -47,7 +48,11 @@ public class Head extends Mover {
         world.eatFood();
 
         // Make a new segment for the head, setting its nextSegment to be the current segment
-        this.bodyProperty = new SimpleObjectProperty<>(new BodySegment(body, this.getDirection(), this.getXPos(), this.getYPos(), world));
+        bodyProperty = new SimpleObjectProperty<>(new BodySegment(body, this.getDirection(), this.getXPos(), this.getYPos(), world));
+
+        // Add a circle for the "new segment"
+        if (world.getPane() instanceof WorldView worldView) // TODO smaller radius for debug
+          worldView.addMoverView(getBody(), WorldView.getGridSize() / 4, Color.GREEN);
 
       } else {
         // If no new segment is added, make all segments follow the head
