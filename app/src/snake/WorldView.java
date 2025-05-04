@@ -43,11 +43,8 @@ public class WorldView extends Pane {
   }
 
   private void bindLocation(Actor actor, Shape actorView) {
-    // TODO This was changed for debugging the directions, revert changes after
-    actorView.translateXProperty().bind(actor.xPosProperty().multiply(UNIT)
-            .add((actor instanceof Segment seg) ? seg.getDirection().getDX() * 5 : 0));
-    actorView.translateYProperty().bind(actor.yPosProperty().multiply(UNIT)
-            .add((actor instanceof Segment seg) ? seg.getDirection().getDY() * 5 : 0));
+    actorView.translateXProperty().bind(actor.xPosProperty().multiply(UNIT));
+    actorView.translateYProperty().bind(actor.yPosProperty().multiply(UNIT));
   }
 
   public static double getGridSize() {

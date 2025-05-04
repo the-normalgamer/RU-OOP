@@ -10,20 +10,20 @@ import javafx.scene.paint.Color;
  * Represents the head part of the snake
  */
 public class Head extends Mover {
-  private Property<Segment> bodyProperty;
+  private Property<Segment> childProperty;
   private BooleanProperty isAlive = new SimpleBooleanProperty(true);
 
   public Head(Segment body, Direction direction, int xPos, int yPos, World world) {
     super(direction, xPos, yPos, world);
-    this.bodyProperty = new SimpleObjectProperty<>(body);
+    this.childProperty = new SimpleObjectProperty<>(body);
   }
 
   public Segment getBody() {
-    return bodyProperty.getValue();
+    return childProperty.getValue();
   }
 
   public Property<Segment> bodyProperty() {
-    return bodyProperty;
+    return childProperty;
   }
 
   public void step() {
@@ -33,11 +33,10 @@ public class Head extends Mover {
     Food food = world.getFood();
 
     tryToMove();
-    Segment body = getBody();
+    Segment child = getBody();
 
-    if (body.bitesItself(this))
+    if (child.bitesItself(this))
       isAlive.set(false);
-
 
     // If it's still alive after trying to move
     if (isAlive.getValue()) {
@@ -48,15 +47,15 @@ public class Head extends Mover {
         world.eatFood();
 
         // Make a new segment for the head, setting its nextSegment to be the current segment
-        bodyProperty = new SimpleObjectProperty<>(new BodySegment(body, this.getDirection(), this.getXPos(), this.getYPos(), world));
+        childProperty = new SimpleObjectProperty<>(new BodySegment(child, this.getDirection(), this.getXPos(), this.getYPos(), world));
 
         // Add a circle for the "new segment"
-        if (world.getPane() instanceof WorldView worldView) // TODO smaller radius for debug
-          worldView.addMoverView(getBody(), WorldView.getGridSize() / 4, Color.GREEN);
+        if (world.getPane() instanceof WorldView worldView)
+          worldView.addMoverView(getBody(), WorldView.getGridSize() / 1.5, Color.GREEN);
 
       } else {
         // If no new segment is added, make all segments follow the head
-        body.follow(this.getDirection());
+        child.follow(this.getDirection());
       }
 
     }
