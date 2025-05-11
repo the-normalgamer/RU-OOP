@@ -17,8 +17,8 @@ public class Main {
 
         // Populate the group
         for (int i = 0; i < size; i++) {
-            // Prompt the user for a name
-            System.out.println("Enter the name of student " + (i + 1) + ":");
+            // Prompt the user for a label
+            System.out.println("Enter the label of student " + (i + 1) + ":");
             String[] name = scan.nextLine().split(" ", 2);
             String fName = name[0];
             String lName = name.length > 1 ? name[1] : "";
@@ -37,7 +37,7 @@ public class Main {
 
         // Prompt for changing student names
         while (true) {
-            System.out.println("Student number and new given/family name:");
+            System.out.println("Student number and new given/family label:");
             String[] name = scan.nextLine().split(" ", 3);
             if (name.length > 2) {
                 int number = Integer.parseInt(name[0]);
@@ -48,9 +48,9 @@ public class Main {
                 String lName = name[2];
 
                 group.changeStudentName(number, fName, lName);
-                System.out.println("Changed name of student s" + number + " to " + fName + " " + lName);
+                System.out.println("Changed label of student s" + number + " to " + fName + " " + lName);
             } else {
-                System.out.println("Invalid input! Please enter the student number, followed by the new full name.");
+                System.out.println("Invalid input! Please enter the student number, followed by the new full label.");
             }
         }
         System.out.println("Bye!");
