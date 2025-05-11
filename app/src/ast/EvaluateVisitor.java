@@ -1,23 +1,23 @@
 package ast;
 
-public class EvaluateVisitor implements FormulaVisitor {
+public class EvaluateVisitor implements FormulaVisitor<Boolean> {
     @Override
-    public void visit(Not form) {
+    public Boolean visit(Not form) {
 
     }
 
     @Override
-    public void visit(Atom form) {
+    public Boolean visit(Atom form) {
 
     }
 
     @Override
-    public void visit(Constant form) {
+    public Boolean visit(Constant form) {
 
     }
 
     @Override
-    public void visit(BinaryFormula form) {
+    public Boolean visit(BinaryFormula form) {
 
     }
 }

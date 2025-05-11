@@ -1,7 +1,7 @@
 package ast;
 
-public record BinaryFormula(Formula operand) implements Formula {
-    public void accept (FormulaVisitor v) {
-        v.visit(this);
+public record BinaryFormula(Formula operandA, Formula operandB) implements Formula {
+    public void accept (FormulaVisitor visitor) {
+        visitor.visit(this);
     }
 }

@@ -1,24 +1,24 @@
 package ast;
 
-public class PrintVisitor implements FormulaVisitor {
+public class PrintVisitor implements FormulaVisitor<String> {
 
     @Override
-    public void visit(Not form) {
+    public String visit(Not form) {
+        return "¬" + form;
+    }
+
+    @Override
+    public String visit(Atom form) {
 
     }
 
     @Override
-    public void visit(Atom form) {
+    public String visit(Constant form) {
 
     }
 
     @Override
-    public void visit(Constant form) {
-
-    }
-
-    @Override
-    public void visit(BinaryFormula form) {
+    public String visit(BinaryFormula form) {
 
     }
 }

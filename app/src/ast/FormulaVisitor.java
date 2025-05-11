@@ -1,8 +1,11 @@
 package ast;
 
-public interface FormulaVisitor {
-    void visit (Not form);
-    void visit (Atom form);
-    void visit (Constant form);
-    void visit (BinaryFormula form);
+public interface FormulaVisitor<Result> {
+    Result visit(Not form);
+
+    Result visit(Atom form);
+
+    Result visit(Constant form);
+
+    Result visit(BinaryFormula form);
 }

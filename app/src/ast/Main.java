@@ -8,6 +8,6 @@ public class Main {
 
 		PrintVisitor v = new PrintVisitor();
 
-		f1.accept (v);
+		f1.accept(v);
 	}
 }

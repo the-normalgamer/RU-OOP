@@ -1,7 +1,9 @@
 package ast;
 
 public record Not(Formula operand) implements Formula {
-    public void accept (FormulaVisitor v) {
-        v.visit(this);
+
+    @Override
+    public void accept(FormulaVisitor visitor) {
+        visitor.visit(this);
     }
 }

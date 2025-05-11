@@ -1,7 +1,9 @@
 package ast;
 
-public record Constant(Formula operand) implements Formula {
-    public void accept (FormulaVisitor v) {
-        v.visit(this);
+public record Constant(Boolean value) implements Formula {
+    @Override
+    public void accept(FormulaVisitor visitor) {
+        visitor.visit(this);
     }
 }
+
