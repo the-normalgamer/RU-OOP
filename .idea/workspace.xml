@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f6d1c20c-110f-4c79-999e-bb63d73545f1" name="Changes" comment="assignment 10 test cases">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/out/production/classes/quadtrees/Bitmap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/out/production/classes/quadtrees/BlackLeaf.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/out/production/classes/quadtrees/GreyNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/out/production/classes/quadtrees/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/out/production/classes/quadtrees/QTree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/out/production/classes/quadtrees/QuadTreeNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/out/production/classes/quadtrees/WhiteLeaf.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/out/test/classes/quadtrees/QuadTreeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/ast/Atom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/ast/BinOp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/ast/BinaryFormula.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/ast/Constant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/ast/EvaluateVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/ast/Formula.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/ast/FormulaFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/ast/FormulaVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/ast/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/ast/Not.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/ast/PrintVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/expressions/Expression.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/expressions/ExpressionFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/expressions/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/expressions/no_argument/Constant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/expressions/no_argument/NoArgExpr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/expressions/no_argument/Variable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/expressions/one_argument/Negate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/expressions/one_argument/OneArgExpr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/expressions/two_arguments/Addition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/expressions/two_arguments/Multiplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/expressions/two_arguments/TwoArgExpr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/factory/java/factory/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/factory/java/factory/Chair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/factory/java/factory/Display.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/factory/java/factory/EnergyConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/factory/java/factory/Fridge.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/factory/java/factory/ProcedureOnevisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/factory/java/factory/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/factory/java/factory/ProductVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/factory/java/factory/Tv.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/factory/java/factory/Warehouse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/geometric/Circle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/geometric/Geometric.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/geometric/GeometricComparatorArea.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/geometric/GeometricComparatorX.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/geometric/GeometricComparatorY.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/geometric/GeometricCriterionArea.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/geometric/GeometricCriterionX.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/geometric/GeometricCriterionY.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/geometric/GeometricPredicate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/geometric/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/geometric/Rectangle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/properties/WarmUp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quadtrees/Bitmap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quadtrees/BlackLeaf.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quadtrees/GreyNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quadtrees/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quadtrees/QTree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quadtrees/QuadTreeNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quadtrees/WhiteLeaf.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quiz/ExampleQuestions.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quiz/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quiz/MultipleChoiceQuestion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quiz/OpenQuestion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quiz/Question.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/quiz/ThisThatQuestion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/slidingGame/Configuration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/slidingGame/Direction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/slidingGame/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/slidingGame/SlidingGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/slidingGame/Solver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/snake/Actor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/snake/BodySegment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/snake/Direction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/snake/Food.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/snake/Head.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/snake/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/snake/Mover.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/snake/Segment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/snake/TailSegment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/snake/World.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/snake/WorldView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/student/Group.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/student/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/expressions/ExpressionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/factory/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/geometric/Assignment02Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/geometric/Assignment02Tester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/properties/PropertyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/quadtrees/QuadTreeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/quiz/QuestionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/slidingGame/SlidingGameTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/student/Assignment01Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/student/Assignment01Tester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/visitor/EvaluateVisitorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/visitor/PrintVisitorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="assignment-snake-start" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="assignment-snake-start" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="assignment-snake-start" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="assignment-snake-start" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;the-normalgamer&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/the-normalgamer/RU-OOP.git&quot;,
+    &quot;accountId&quot;: &quot;0ce0c892-8f5c-443f-923d-89b901b1035e&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2waLsJCfFm0yPd33wHQ0mJDBWy9" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.RU-OOP:app [run].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Assigment-12",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="RU-OOP:app [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.RU-OOP:app [run]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f6d1c20c-110f-4c79-999e-bb63d73545f1" name="Changes" comment="" />
+      <created>1746274943002</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746274943002</updated>
+      <workItem from="1746274944455" duration="4588000" />
+      <workItem from="1746357260144" duration="11858000" />
+      <workItem from="1746994374851" duration="6620000" />
+      <workItem from="1748080605179" duration="1294000" />
+    </task>
+    <task id="LOCAL-00001" summary="implemented timeline that mvoes the snake every 0.5 seconds, but doesn't pause yet">
+      <option name="closed" value="true" />
+      <created>1746276649059</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746276649059</updated>
+    </task>
+    <task id="LOCAL-00002" summary="controls">
+      <option name="closed" value="true" />
+      <created>1746278713754</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746278713754</updated>
+    </task>
+    <task id="LOCAL-00003" summary="assignment 10 start">
+      <option name="closed" value="true" />
+      <created>1746994593786</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746994593786</updated>
+    </task>
+    <task id="LOCAL-00004" summary="assignment 10 start">
+      <option name="closed" value="true" />
+      <created>1746994888030</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1746994888030</updated>
+    </task>
+    <task id="LOCAL-00005" summary="assignment 10 test cases">
+      <option name="closed" value="true" />
+      <created>1747000416371</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1747000416371</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="implemented timeline that mvoes the snake every 0.5 seconds, but doesn't pause yet" />
+    <MESSAGE value="controls" />
+    <MESSAGE value="assignment 10 start" />
+    <MESSAGE value="assignment 10 test cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="assignment 10 test cases" />
+  </component>
+</project>
