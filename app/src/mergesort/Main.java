@@ -30,4 +30,9 @@ public class Main {
       System.out.println("sorter arrays equals = " + Arrays.equals(a1, a2));
       System.out.println("The number of processors is " + Runtime.getRuntime().availableProcessors());
     }
+
+    //sequential sort: 1253 millis. Array is sorted = true
+    //parrallel sort: 555 millis. Array is sorted = true
+    //sorter arrays equals = true
+    //The number of processors is 16
 }
