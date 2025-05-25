@@ -24,8 +24,7 @@ public class Main {
       
       System.out.print("parrallel sort: ");
       time1 = System.currentTimeMillis();
-      // TODO: implement me!
-      //ParallelMergeSort.sort(a2);
+      ParallelMergeSort.sort(a2);
       time2 = System.currentTimeMillis();
       System.out.println((time2 - time1) + " millis. Array is sorted = " + MergeSort.isSorted(a2));
       System.out.println("sorter arrays equals = " + Arrays.equals(a1, a2));
