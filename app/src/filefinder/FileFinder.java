@@ -24,7 +24,8 @@ public class FileFinder {
 				if (file.getName().equals(fileName)) {
 					System.out.println("Found at: " + file.getAbsolutePath());
 				} else if (file.isDirectory()) {
-					find(file, fileName);
+					Thread dirthread = new Thread(() -> find(file, fileName));
+					dirthread.start();
 				}
 			}
 		}
