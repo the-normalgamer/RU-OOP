@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6d1c20c-110f-4c79-999e-bb63d73545f1" name="Changes" comment="assignment 12 3 and 4">
+    <list default="true" id="f6d1c20c-110f-4c79-999e-bb63d73545f1" name="Changes" comment="assignment 12 Done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/mergesort/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/mergesort/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +178,7 @@
       <workItem from="1746357260144" duration="11858000" />
       <workItem from="1746994374851" duration="6620000" />
       <workItem from="1748080605179" duration="1294000" />
-      <workItem from="1748095892682" duration="16164000" />
+      <workItem from="1748095892682" duration="16783000" />
     </task>
     <task id="LOCAL-00001" summary="implemented timeline that mvoes the snake every 0.5 seconds, but doesn't pause yet">
       <option name="closed" value="true" />
@@ -237,7 +236,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748183668702</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="assignment 12 Done">
+      <option name="closed" value="true" />
+      <created>1748186894545</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748186894545</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,6 +257,7 @@
     <MESSAGE value="assignment 10 test cases" />
     <MESSAGE value="assignment 12 1 and 2" />
     <MESSAGE value="assignment 12 3 and 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="assignment 12 3 and 4" />
+    <MESSAGE value="assignment 12 Done" />
+    <option name="LAST_COMMIT_MESSAGE" value="assignment 12 Done" />
   </component>
 </project>
