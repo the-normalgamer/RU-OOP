@@ -37,7 +37,7 @@ public class Simulation {
 		taxis = new Taxi[NR_OF_TAXIS];
 		for (int i = 0; i < NR_OF_TAXIS; i++) {
 			taxis[i] = i < NR_OF_SMALL_TAXIS ? new Taxi(i + 1, CAPACITY_SMALL, TIME_SMALL, station)
-					: new Taxi(i + 1, CAPACITY_LARGE, TIME_LARGE, station);
+					                         : new Taxi(i + 1, CAPACITY_LARGE, TIME_LARGE, station);
 		}
 		train = new Train(station);
 	}
@@ -71,7 +71,7 @@ public class Simulation {
 
 	public void showStatistics() {
 		System.out.println("All persons have been transported");
-		System.out.println("Total transport time in this simulation:" + calcTotalTime());
+		System.out.println("Total transport time in this simulation: " + calcTotalTime());
 		System.out.println("Total number of train travelers: " + getArrivedPassengerCount());
 		System.out.println("Total number of persons transported in this simulation: " + getDepartedPassengerCount());
 	}
