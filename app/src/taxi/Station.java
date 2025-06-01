@@ -1,5 +1,8 @@
 package taxi;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * Class that holds the number of persons arriving by train at the station and
  * waiting for a taxi
@@ -9,6 +12,7 @@ public class Station {
 	private int nrOfPassengersAtStation = 0;
 	private int totalNrOfPassengers = 0;
 	private boolean isClosed = false;
+	public Lock lock = new ReentrantLock();
 
 	public void enterStation(int nrOfPassengers) {
 		nrOfPassengersAtStation += nrOfPassengers;
@@ -23,8 +27,15 @@ public class Station {
 	 * @return number of passengers actually leaving
 	 */
 	public int leaveStation(int requestedNrOfPassengers) {
-		int actuallyLeaving = Math.min(requestedNrOfPassengers, nrOfPassengersAtStation);
-		nrOfPassengersAtStation -= actuallyLeaving;
+		int actuallyLeaving;
+		lock.lock();
+		try {
+			actuallyLeaving = Math.min(requestedNrOfPassengers, nrOfPassengersAtStation);
+			nrOfPassengersAtStation -= actuallyLeaving;
+		}
+		finally {
+			lock.unlock();
+		}
 		return actuallyLeaving;
 	}
 
