@@ -15,9 +15,15 @@ public class Station {
 	public Lock lock = new ReentrantLock();
 
 	public void enterStation(int nrOfPassengers) {
-		nrOfPassengersAtStation += nrOfPassengers;
-		totalNrOfPassengers += nrOfPassengers;
-		System.out.println(nrOfPassengers + " passengers arrived at station");
+		lock.lock();
+		try {
+			nrOfPassengersAtStation += nrOfPassengers;
+			totalNrOfPassengers += nrOfPassengers;
+			System.out.println(nrOfPassengers + " passengers arrived at station");
+		}
+		finally {
+			lock.unlock();
+		}
 	}
 
 	/**
