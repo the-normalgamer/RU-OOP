@@ -3,23 +3,3 @@
 
 # Ignore Gradle build output directory
 build
-**/bin
-
-.classpath
-
-# Ignore vscode related files
-.vscode
-
-# Backups
-*~
-
-# Ignore Gradle build output directory
-build
-
-# Ignore Build directory
-app/bin
-
-.idea
-out/
-app/
-
