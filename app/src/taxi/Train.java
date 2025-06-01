@@ -41,7 +41,7 @@ public class Train implements Runnable {
 
 	@Override
 	public void run() {
-		while (!station.isClosed()) {
+		while (nrOfTrips < Simulation.TRAIN_TRIPS) {
 			loadPassengers(Util.getRandomNumber(Simulation.MIN_TRAVELLERS, Simulation.MAX_TRAVELLERS));
 			unloadPassengers();
 			try {
@@ -50,5 +50,6 @@ public class Train implements Runnable {
 				Thread.currentThread().interrupt();
 			}
 		}
+		closeStation();
 	}
 }
