@@ -1,5 +1,6 @@
 package taxi;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -24,6 +25,8 @@ public class Simulation {
 	private final Taxi[] taxis;
 	private final Train train;
 	private final Station station;
+
+	private ExecutorService executor;
 
 	/**
 	 * hasEnded: is the simulation finished? nextTaxi: number of the taxi to be use
@@ -64,15 +67,16 @@ public class Simulation {
 	}
 
 	public void start() {
-		ExecutorService executor = Executors.newFixedThreadPool(NR_OF_TAXIS + 1);
+		executor = Executors.newFixedThreadPool(NR_OF_TAXIS + 1);
 		executor.submit(train);
 		for (Taxi taxi : taxis) {
 			executor.submit(taxi);
 		}
 
-//		while (!ended()) {
-////			step();
-//		}
+		executor.shutdown();
+		try {
+			executor.awaitTermination(Long.MAX_VALUE, java.util.concurrent.TimeUnit.NANOSECONDS);
+		} catch (InterruptedException ignored) {}
 	}
 
 	private boolean ended() {

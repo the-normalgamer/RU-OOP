@@ -1,5 +1,6 @@
 package taxi;
 
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -12,7 +13,9 @@ public class Station {
 	private int nrOfPassengersAtStation = 0;
 	private int totalNrOfPassengers = 0;
 	private boolean isClosed = false;
-	public Lock lock = new ReentrantLock();
+	private final Lock lock = new ReentrantLock();
+	private final Condition hasPassengers = lock.newCondition();
+	private final Condition noPassengers = lock.newCondition();
 
 	public void enterStation(int nrOfPassengers) {
 		lock.lock();
@@ -20,6 +23,8 @@ public class Station {
 			nrOfPassengersAtStation += nrOfPassengers;
 			totalNrOfPassengers += nrOfPassengers;
 			System.out.println(nrOfPassengers + " passengers arrived at station");
+
+			hasPassengers.signal();
 		}
 		finally {
 			lock.unlock();
@@ -38,6 +43,9 @@ public class Station {
 		try {
 			actuallyLeaving = Math.min(requestedNrOfPassengers, nrOfPassengersAtStation);
 			nrOfPassengersAtStation -= actuallyLeaving;
+
+			if (nrOfPassengersAtStation == 0)
+				noPassengers.signal();
 		}
 		finally {
 			lock.unlock();
