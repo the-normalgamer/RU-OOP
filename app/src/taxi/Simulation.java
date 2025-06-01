@@ -1,5 +1,8 @@
 package taxi;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Simulation {
 
 	/**
@@ -46,6 +49,7 @@ public class Simulation {
 	 * simulation step: if there are passengers load them in a taxi, otherwise let a
 	 * train bring new passengers, or indicate that simulation stops
 	 */
+	@Deprecated
 	private void step() {
 		if (station.waitingPassengers() > 0) {
 			taxis[nextTaxi].takePassengers();
@@ -60,9 +64,15 @@ public class Simulation {
 	}
 
 	public void start() {
-		while (!ended()) {
-			step();
+		ExecutorService executor = Executors.newFixedThreadPool(NR_OF_TAXIS + 1);
+		executor.submit(train);
+		for (Taxi taxi : taxis) {
+			executor.submit(taxi);
 		}
+
+//		while (!ended()) {
+////			step();
+//		}
 	}
 
 	private boolean ended() {
