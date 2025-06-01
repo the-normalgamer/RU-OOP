@@ -50,7 +50,7 @@ public class Taxi implements Runnable {
 
 	@Override
 	public void run() {
-		while (!station.isClosed()) {
+		while (station.waitingPassengers() > 0 || !station.isClosed()) {
 			takePassengers();
             try {
                 Thread.sleep(10);
