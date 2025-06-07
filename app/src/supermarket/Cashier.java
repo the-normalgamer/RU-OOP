@@ -12,6 +12,8 @@ public class Cashier implements Callable<Void> {
 
 	@Override
 	public Void call() {
-		return null;
-	}
+		while (true) {
+			checkout.putInBin(checkout.removeFromBelt());
+		}
+    }
 }
