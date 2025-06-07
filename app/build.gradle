@@ -11,6 +11,16 @@ plugins {
     id 'application'
 }
 
+run {
+  standardInput = System.in
+}
+
+test {
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
@@ -36,15 +46,5 @@ sourceSets {
 
 application {
     // Define the main class for the application.
-    mainClass = 'taxi.Main'
-}
-
-run {
-  standardInput = System.in
-}
-
-test {
-    testLogging {
-        exceptionFormat = 'full'
-    }
+    mainClass = 'supermarket.Main'
 }
