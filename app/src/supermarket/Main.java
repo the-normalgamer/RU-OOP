@@ -25,8 +25,24 @@ public class Main {
 		int totalItemsSold = 0;
 
 		int totalItemsWanted = customers.stream().mapToInt(Customer::getNumberOfItemsWanted).sum();
+		totalItemsSold = customerResults
+			.stream()
+			.map(Future -> {
+				try {
+					Future.get();
+				} catch (InterruptedException | ExecutionException e) {
+					return 0;
+				}
+				return 0;
+			})
+			.reduce(0, Integer::sum);
+
 		cashiers.forEach(c -> {c.cancel(true); });
 		executor.shutdown();
+		try {
+			executor.awaitTermination(Long.MAX_VALUE, java.util.concurrent.TimeUnit.NANOSECONDS);
+		} catch (InterruptedException ignored) {}
+
 		System.out.println("All customers are done.");
 		System.out.println(totalItemsWanted + " items wanted.");
 		System.out.println(totalItemsSold + " items sold.");
