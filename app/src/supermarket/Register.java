@@ -25,7 +25,7 @@ public class Register {
 	}
 
 	public Item removeFromBin() {
-		return (Item) bin.removeFrom();
+		return bin.removeFrom();
 	}
 
 	public void claim() {
