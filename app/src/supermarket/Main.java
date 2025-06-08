@@ -25,6 +25,8 @@ public class Main {
 		int totalItemsSold = 0;
 
 		int totalItemsWanted = customers.stream().mapToInt(Customer::getNumberOfItemsWanted).sum();
+		cashiers.forEach(c -> {c.cancel(true); });
+		executor.shutdown();
 		System.out.println("All customers are done.");
 		System.out.println(totalItemsWanted + " items wanted.");
 		System.out.println(totalItemsSold + " items sold.");
