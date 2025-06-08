@@ -17,7 +17,7 @@ public class Register {
 	}
 
 	public Item removeFromBelt() {
-		return (Item) belt.removeFrom();
+		return belt.removeFrom();
 	}
 
 	public void putInBin(Item article) {
@@ -25,7 +25,7 @@ public class Register {
 	}
 
 	public Item removeFromBin() {
-		return (Item) bin.removeFrom();
+		return bin.removeFrom();
 	}
 
 	public void claim() {
